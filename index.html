@@ -1,0 +1,1502 @@
+<!DOCTYPE html>
+<html lang="hun">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mass</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Cherry+Swash&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script src="scripts.js"></script>
+</head>
+<body>
+	<main>
+		<header>
+			<div class="container">
+				<h1>Mass</h1>
+				<div class="subheader">csak ez számít</div>
+			</div>
+		</header>
+    <div class="loader-container">
+      <div class="loader">Loading...</div>
+    </div>
+		<div class="content">
+			<div class="do-registration">
+				<div class="container">
+					<div>
+						<b>Regisztrálj a Massra,</b> ahova Hektor nevű barátod hívott meg!
+					</div>
+					<div>
+						<b>Hektor már nagyon vár, ne késlekedj!</b>
+					</div>
+          <button id="registration" class="btn">Regisztráció megkezdése</button>
+				</div>
+				<div class="info">A mass valójában egy játék, ha megkezded a regisztrációt egy körülbelül 20 perces interaktív novella veszi kezdetét! Ezt ne feledd és jó szórakozást!</div>
+			</div>
+			<div id="registration-screen" class="container registration-form offscreen">
+        <form name="registration">
+          <div class="form-fields">
+            <div>Regisztráció</div>
+            <h2>Személyes adataid</h2>
+            <select name="name" id="user-name" required class="hide-hints">
+              <option value="" selected disabled hidden>Mi a neved?</option>
+              <option value="Andris">Andris</option>
+              <option value="Andriska">Andriska</option>
+              <option value="A-boy">A-boy</option>
+            </select>
+            <select name="age" id="user-age" required class="hide-hints">
+              <option value="" selected disabled hidden>Hány éves vagy?</option>
+              <option value="17">17</option>
+              <option value="15">15</option>
+              <option value="13">13</option>
+            </select>
+            <hr>
+            <h2>Válasz profil képet</h2>
+            <img class="hero-image offscreen">
+            <button id="hero-image-select" class="btn red">Feltöltöm a telefonomról</button>
+            <hr>
+            <select name="school" id="user-school" required class="hide-hints">
+              <option value="" selected disabled hidden>Hova jársz iskolába?</option>
+              <option value="Mácsai Aladár Informatikai Szakképző">Mácsai Aladár Informatikai Szakképző</option>
+              <option value="Rákosi Ede Gimnázium">Rákosi Ede Gimnázium</option>
+              <option value="Kis Dénes Középiskola">Kis Dénes Középiskola</option>
+            </select>
+            <select name="music" id="user-music" required class="hide-hints">
+              <option value="" selected disabled hidden>Mi a kedvenc zeni stílusod?</option>
+              <option value="metál">metál</option>
+              <option value="elektró">elektró</option>
+              <option value="alter">alter</option>
+            </select>
+            <button type="submit" id="registration-submit" class="btn" disabled="disabled">Mentés és tovább</button>
+          </div>
+          <div id="hero-image-seleccontainer" class="offscreen">
+            <div>Profilkép feltötlés a telefon memóriájából</div>
+            <input type="radio" id="hero-image-1" name="hero-image" value="images/hero_image1.jpg" required>
+            <label for="hero-image-1"><img src="images/hero_image1.jpg"></label>
+            <input type="radio" id="hero-image-2" name="hero-image" value="images/hero_image2.jpg" required>
+            <label for="hero-image-2"><img src="images/hero_image2.jpg"></label>
+            <input type="radio" id="hero-image-3" name="hero-image" value="images/hero_image3.jpg" required>
+            <label for="hero-image-3"><img src="images/hero_image3.jpg"></label>
+            <button id="hero-image-save" class="btn red" disabled="disabled">Feltöltöm a telefonomról</button>
+          </div>
+        </form>
+      </div>
+      <div id="registration-success" class="container offscreen">
+        <div>Gratulálok!<br>Létrehoztad a profilodat, most már választhatsz barátokat!</div>
+        <hr>
+        <div id="user"><span class="user-name"></span><span class="user-age"></span></div>
+        <div id="school"></div>
+        <img id="profile">
+        <button id="registration-done" class="btn">Tovább a barátokhoz</button>
+        <button id="back-to-registration" class="btn red selected">Vissza az előzőre</button>
+			</div>
+      <div id="find-friend" class="container offscreen">
+        <form name="friends">
+          <div class="friend description">Te a <span class="school"></span> intézményt adtad meg, mint iskolád! Itt vannak páran akik szintén oda járhatnak. 
+            
+            Egy barátod már van, legyen több!
+          </div>
+          <div>Jelöld ki azokat akikel ugyan oda jártok.</div>
+          <input type="checkbox" id="friend1" name="Hektor" value="Hektor" checked="checked" disabled>
+          <label for="friend1">
+            <div class="friend">
+              <img src="images/hektor.jpg" alt="Hektor"><div><div class="name">Hektor <span>(A meghívód)</span></div><span class="school"></span></div>
+            </div>
+          </label>
+
+          <input type="checkbox" id="friend2" name="Beni" value="Beni">
+          <label for="friend2">
+            <div class="friend">
+              <img src="images/beni.jpg"><div><div class="name">Beni</div><span class="school"></span></div>
+            </div>
+          </label>
+          
+          <input type="checkbox" id="friend3" name="Dénes" value="Dénes">
+          <label for="friend3">
+            <div class="friend">
+              <img src="images/denes.jpg"><div><div class="name">Dénes</div><span class="school"></span></div>
+            </div>
+          </label>
+          
+          <input type="checkbox" id="friend4" name="Fanni" value="Fanni" fake>
+          <label for="friend4">
+            <div class="friend fake">
+              <img src="images/fanni.jpg"><div><div class="name">Fanni</div><span class="school">Harsányi János Gazdasági Szakközépiskola</span></div>
+            </div>
+          </label>
+          
+          <input type="checkbox" id="friend5" name="Hanna" value="Hanna">
+          <label for="friend5">
+            <div class="friend">
+              <img src="images/hanna.jpg"><div><div class="name">Hanna</div><span class="school"></span></div>
+            </div>
+          </label>
+          <button id="friends-done" class="btn" disabled="disabled">Jelölések elküldése</button>
+        </form>
+        <div id="registration-done-popup" class="offscreen">
+          <div class="fade">
+            <div class="container">
+              <svg width="74" height="68" viewBox="0 0 74 68" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M37.0002 67.2522L31.744 62.4853C13.0752 45.5384 0.750244 34.3553 0.750244 20.6709C0.750244 9.48777 9.50462 0.733398 20.6877 0.733398C26.9952 0.733398 33.049 3.66965 37.0002 8.29152C40.9515 3.66965 47.0052 0.733398 53.3127 0.733398C64.4959 0.733398 73.2502 9.48777 73.2502 20.6709C73.2502 34.3553 60.9252 45.5384 42.2565 62.4853L37.0002 67.2522Z" fill="#4B7EFF"/>
+              </svg>
+              <div>Ügyes vagy, most már vannak barátaid!</div>
+              <h2>Nézd meg az üzenőfalat, hogy tudd, mi történik!</h2>
+              <button id="go-to-feed" class="btn">Megnézem!</button>
+            </div>
+          </div>
+        </div>
+			</div>
+      <div id="feed" class="container offscreen">
+        <div class="feed-header">
+          <div class="logo">Mass</div>
+          <div class="likes-container need-to-update">
+            <svg width="74" height="68" viewBox="0 0 74 68" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M37.0002 67.2522L31.744 62.4853C13.0752 45.5384 0.750244 34.3553 0.750244 20.6709C0.750244 9.48777 9.50462 0.733398 20.6877 0.733398C26.9952 0.733398 33.049 3.66965 37.0002 8.29152C40.9515 3.66965 47.0052 0.733398 53.3127 0.733398C64.4959 0.733398 73.2502 9.48777 73.2502 20.6709C73.2502 34.3553 60.9252 45.5384 42.2565 62.4853L37.0002 67.2522Z" fill="#4B7EFF"/>
+            </svg>
+            <span class="likes"></span>
+          </div>
+        </div>
+        <hr>
+        <div class="user">
+          <div class="first">
+            <img src="">
+            <input type="text" disabled placeholder="Mi jár a fejedben?">
+          </div>
+          <div class="second">
+            <div>
+              <span class="name"></span>
+              <div class="likes-container need-to-update">
+                <svg width="74" height="68" viewBox="0 0 74 68" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M37.0002 67.2522L31.744 62.4853C13.0752 45.5384 0.750244 34.3553 0.750244 20.6709C0.750244 9.48777 9.50462 0.733398 20.6877 0.733398C26.9952 0.733398 33.049 3.66965 37.0002 8.29152C40.9515 3.66965 47.0052 0.733398 53.3127 0.733398C64.4959 0.733398 73.2502 9.48777 73.2502 20.6709C73.2502 34.3553 60.9252 45.5384 42.2565 62.4853L37.0002 67.2522Z" fill="#4B7EFF"/>
+                </svg>
+                <span class="likes"></span>
+              </div>
+            </div>
+            <div class="btn">Megosztás</div>
+          </div>
+        </div>
+        <div class="likesPopup offscreen">
+          <div class="text">1000 új kedvelésed érkezett! Az aztán MEME!</div>
+          <button id="yeah" class="btn"> Értem</button>
+        </div>
+        <div class="feed-content">
+          <div class="feed container andris offscreen">
+            <div class="user-data">
+              <img src="images/profile.jpg" ><div class="text"><div class="name"><b>Andris</b> megosztotta</div><div class="status">with Randi Maker</div></div>
+            </div>
+            <div class="img-wrapper">
+            </div>
+            <div class="description">
+            </div>
+            <div class="like-section">
+              <div class="likes-container">
+                <svg width="74" height="68" viewBox="0 0 74 68" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M37.0002 67.2522L31.744 62.4853C13.0752 45.5384 0.750244 34.3553 0.750244 20.6709C0.750244 9.48777 9.50462 0.733398 20.6877 0.733398C26.9952 0.733398 33.049 3.66965 37.0002 8.29152C40.9515 3.66965 47.0052 0.733398 53.3127 0.733398C64.4959 0.733398 73.2502 9.48777 73.2502 20.6709C73.2502 34.3553 60.9252 45.5384 42.2565 62.4853L37.0002 67.2522Z" fill="#4B7EFF"/>
+                </svg>
+                <span class="likes">0</span>
+                <span class="comment">0 Hozzászólás</span>
+              </div>
+            </div>
+          </div>
+          <div class="feed container hektor">
+            <div class="user-data">
+              <img src="images/hektor.jpg" alt="Hektor"><div class="text"><div class="name"><b>Hektor</b> megosztotta</div><div class="status">Királynak érzi magát</div></div>
+            </div>
+            <img src="images/feed/hektor1.jpg">
+            <div class="description">
+              rajság fajinság &#128512;
+            </div>
+            <div class="like-section">
+              <div class="likes-container">
+                <svg width="74" height="68" viewBox="0 0 74 68" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M37.0002 67.2522L31.744 62.4853C13.0752 45.5384 0.750244 34.3553 0.750244 20.6709C0.750244 9.48777 9.50462 0.733398 20.6877 0.733398C26.9952 0.733398 33.049 3.66965 37.0002 8.29152C40.9515 3.66965 47.0052 0.733398 53.3127 0.733398C64.4959 0.733398 73.2502 9.48777 73.2502 20.6709C73.2502 34.3553 60.9252 45.5384 42.2565 62.4853L37.0002 67.2522Z" fill="#4B7EFF"/>
+                </svg>
+                <span class="likes">3</span>
+                <span class="comment">0 Hozzászólás</span>
+              </div>
+              <button class="like">
+                <svg class="like-svg" width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M18.125 0.75C15.95 0.75 13.8625 1.7625 12.5 3.35625C11.1375 1.7625 9.05 0.75 6.875 0.75C3.01875 0.75 0 3.76875 0 7.625C0 12.3438 4.25 16.2 10.6875 22.0438L12.5 23.6875L14.3125 22.0438C20.75 16.2 25 12.3438 25 7.625C25 3.76875 21.9813 0.75 18.125 0.75ZM12.6313 20.1938L12.5 20.3125L12.3688 20.1938C6.425 14.8 2.5 11.2375 2.5 7.625C2.5 5.13125 4.38125 3.25 6.875 3.25C8.8 3.25 10.675 4.49375 11.3313 6.2H13.6625C14.325 4.49375 16.2 3.25 18.125 3.25C20.6188 3.25 22.5 5.13125 22.5 7.625C22.5 11.2375 18.575 14.8 12.6313 20.1938Z" fill="#EB6B6B"/>
+                </svg>
+                <svg class="liked-svg offscreen" width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M12.5 23.6875L10.6875 22.0438C4.25 16.2 0 12.3438 0 7.625C0 3.76875 3.01875 0.75 6.875 0.75C9.05 0.75 11.1375 1.7625 12.5 3.35625C13.8625 1.7625 15.95 0.75 18.125 0.75C21.9813 0.75 25 3.76875 25 7.625C25 12.3438 20.75 16.2 14.3125 22.0438L12.5 23.6875Z" fill="#EB6B6B"/>
+                  </svg>                  
+              </button>
+            </div>
+          </div>
+          <div class="feed container beni">
+            <div class="user-data">
+              <img src="images/beni.jpg"><div class="text"><div class="name"><b>Beni</b> megosztotta</div><div class="status">"cool"nak érzi magát</div></div>
+            </div>
+            <img src="images/feed/beni2.jpg">
+            <div class="description">
+              Elég jó vagyok
+            </div>
+            <div class="like-section">
+              <div class="likes-container">
+                <svg width="74" height="68" viewBox="0 0 74 68" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M37.0002 67.2522L31.744 62.4853C13.0752 45.5384 0.750244 34.3553 0.750244 20.6709C0.750244 9.48777 9.50462 0.733398 20.6877 0.733398C26.9952 0.733398 33.049 3.66965 37.0002 8.29152C40.9515 3.66965 47.0052 0.733398 53.3127 0.733398C64.4959 0.733398 73.2502 9.48777 73.2502 20.6709C73.2502 34.3553 60.9252 45.5384 42.2565 62.4853L37.0002 67.2522Z" fill="#4B7EFF"/>
+                </svg>
+                <span class="likes">422</span>
+                <span class="comment">127 Hozzászólás</span>
+              </div>
+              <button class="like">
+                <svg class="like-svg" width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M18.125 0.75C15.95 0.75 13.8625 1.7625 12.5 3.35625C11.1375 1.7625 9.05 0.75 6.875 0.75C3.01875 0.75 0 3.76875 0 7.625C0 12.3438 4.25 16.2 10.6875 22.0438L12.5 23.6875L14.3125 22.0438C20.75 16.2 25 12.3438 25 7.625C25 3.76875 21.9813 0.75 18.125 0.75ZM12.6313 20.1938L12.5 20.3125L12.3688 20.1938C6.425 14.8 2.5 11.2375 2.5 7.625C2.5 5.13125 4.38125 3.25 6.875 3.25C8.8 3.25 10.675 4.49375 11.3313 6.2H13.6625C14.325 4.49375 16.2 3.25 18.125 3.25C20.6188 3.25 22.5 5.13125 22.5 7.625C22.5 11.2375 18.575 14.8 12.6313 20.1938Z" fill="#EB6B6B"/>
+                </svg>
+                <svg class="liked-svg offscreen" width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M12.5 23.6875L10.6875 22.0438C4.25 16.2 0 12.3438 0 7.625C0 3.76875 3.01875 0.75 6.875 0.75C9.05 0.75 11.1375 1.7625 12.5 3.35625C13.8625 1.7625 15.95 0.75 18.125 0.75C21.9813 0.75 25 3.76875 25 7.625C25 12.3438 20.75 16.2 14.3125 22.0438L12.5 23.6875Z" fill="#EB6B6B"/>
+                  </svg>
+              </button>
+            </div>
+          </div>
+          <div class="feed container denes">
+            <div class="user-data">
+              <img src="images/denes.jpg"><div class="text"><div class="name"><b>Dénes</b> megosztotta</div><div class="status">Boldognak érzi magát</div></div>
+            </div>
+            <img src="images/feed/denes1.jpg">
+            <div class="description">
+              Lomtalanítás van a mi uccánkban.
+            </div>
+            <div class="like-section">
+              <div class="likes-container">
+                <svg width="74" height="68" viewBox="0 0 74 68" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M37.0002 67.2522L31.744 62.4853C13.0752 45.5384 0.750244 34.3553 0.750244 20.6709C0.750244 9.48777 9.50462 0.733398 20.6877 0.733398C26.9952 0.733398 33.049 3.66965 37.0002 8.29152C40.9515 3.66965 47.0052 0.733398 53.3127 0.733398C64.4959 0.733398 73.2502 9.48777 73.2502 20.6709C73.2502 34.3553 60.9252 45.5384 42.2565 62.4853L37.0002 67.2522Z" fill="#4B7EFF"/>
+                </svg>
+                <span class="likes">30</span>
+                <span class="comment">12 Hozzászólás</span>
+              </div>
+              <button class="like">
+                <svg class="like-svg" width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M18.125 0.75C15.95 0.75 13.8625 1.7625 12.5 3.35625C11.1375 1.7625 9.05 0.75 6.875 0.75C3.01875 0.75 0 3.76875 0 7.625C0 12.3438 4.25 16.2 10.6875 22.0438L12.5 23.6875L14.3125 22.0438C20.75 16.2 25 12.3438 25 7.625C25 3.76875 21.9813 0.75 18.125 0.75ZM12.6313 20.1938L12.5 20.3125L12.3688 20.1938C6.425 14.8 2.5 11.2375 2.5 7.625C2.5 5.13125 4.38125 3.25 6.875 3.25C8.8 3.25 10.675 4.49375 11.3313 6.2H13.6625C14.325 4.49375 16.2 3.25 18.125 3.25C20.6188 3.25 22.5 5.13125 22.5 7.625C22.5 11.2375 18.575 14.8 12.6313 20.1938Z" fill="#EB6B6B"/>
+                </svg>
+                <svg class="liked-svg offscreen" width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M12.5 23.6875L10.6875 22.0438C4.25 16.2 0 12.3438 0 7.625C0 3.76875 3.01875 0.75 6.875 0.75C9.05 0.75 11.1375 1.7625 12.5 3.35625C13.8625 1.7625 15.95 0.75 18.125 0.75C21.9813 0.75 25 3.76875 25 7.625C25 12.3438 20.75 16.2 14.3125 22.0438L12.5 23.6875Z" fill="#EB6B6B"/>
+                  </svg>
+              </button>
+            </div>
+          </div>
+          <div class="feed container hanna">
+            <div class="user-data">
+              <img src="images/hanna.jpg"><div class="text"><div class="name"><b>Hanna</b> megosztotta</div><div class="status">Fáj neki a cukiság</div></div>
+            </div>
+            <img src="images/feed/hanna1.jpg">
+            <div class="description">
+              IT'S SO FLUFFY I'M GONNA DIE!!!!! Annyira cukiiii &#10084;
+            </div>
+            <div class="like-section">
+              <div class="likes-container">
+                <svg width="74" height="68" viewBox="0 0 74 68" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M37.0002 67.2522L31.744 62.4853C13.0752 45.5384 0.750244 34.3553 0.750244 20.6709C0.750244 9.48777 9.50462 0.733398 20.6877 0.733398C26.9952 0.733398 33.049 3.66965 37.0002 8.29152C40.9515 3.66965 47.0052 0.733398 53.3127 0.733398C64.4959 0.733398 73.2502 9.48777 73.2502 20.6709C73.2502 34.3553 60.9252 45.5384 42.2565 62.4853L37.0002 67.2522Z" fill="#4B7EFF"/>
+                </svg>
+                <span class="likes">10</span>
+                <span class="comment">2 Hozzászólás</span>
+              </div>
+              <button class="like">
+                <svg class="like-svg" width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M18.125 0.75C15.95 0.75 13.8625 1.7625 12.5 3.35625C11.1375 1.7625 9.05 0.75 6.875 0.75C3.01875 0.75 0 3.76875 0 7.625C0 12.3438 4.25 16.2 10.6875 22.0438L12.5 23.6875L14.3125 22.0438C20.75 16.2 25 12.3438 25 7.625C25 3.76875 21.9813 0.75 18.125 0.75ZM12.6313 20.1938L12.5 20.3125L12.3688 20.1938C6.425 14.8 2.5 11.2375 2.5 7.625C2.5 5.13125 4.38125 3.25 6.875 3.25C8.8 3.25 10.675 4.49375 11.3313 6.2H13.6625C14.325 4.49375 16.2 3.25 18.125 3.25C20.6188 3.25 22.5 5.13125 22.5 7.625C22.5 11.2375 18.575 14.8 12.6313 20.1938Z" fill="#EB6B6B"/>
+                </svg>
+                <svg class="liked-svg offscreen" width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M12.5 23.6875L10.6875 22.0438C4.25 16.2 0 12.3438 0 7.625C0 3.76875 3.01875 0.75 6.875 0.75C9.05 0.75 11.1375 1.7625 12.5 3.35625C13.8625 1.7625 15.95 0.75 18.125 0.75C21.9813 0.75 25 3.76875 25 7.625C25 12.3438 20.75 16.2 14.3125 22.0438L12.5 23.6875Z" fill="#EB6B6B"/>
+                  </svg>
+              </button>
+            </div>
+          </div>
+          <div class="feed container hektor">
+            <div class="user-data">
+              <img src="images/hektor.jpg" alt="Hektor"><div class="text"><div class="name"><b>Hektor</b> megosztotta</div><div class="status">Viccesnek érzi magát</div></div>
+            </div>
+            <img src="images/feed/hektor2.jpg">
+            <div class="description">
+            </div>
+            <div class="like-section">
+              <div class="likes-container">
+                <svg width="74" height="68" viewBox="0 0 74 68" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M37.0002 67.2522L31.744 62.4853C13.0752 45.5384 0.750244 34.3553 0.750244 20.6709C0.750244 9.48777 9.50462 0.733398 20.6877 0.733398C26.9952 0.733398 33.049 3.66965 37.0002 8.29152C40.9515 3.66965 47.0052 0.733398 53.3127 0.733398C64.4959 0.733398 73.2502 9.48777 73.2502 20.6709C73.2502 34.3553 60.9252 45.5384 42.2565 62.4853L37.0002 67.2522Z" fill="#4B7EFF"/>
+                </svg>
+                <span class="likes">10</span>
+                <span class="comment">2 Hozzászólás</span>
+              </div>
+              <button class="like">
+                <svg class="like-svg" width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M18.125 0.75C15.95 0.75 13.8625 1.7625 12.5 3.35625C11.1375 1.7625 9.05 0.75 6.875 0.75C3.01875 0.75 0 3.76875 0 7.625C0 12.3438 4.25 16.2 10.6875 22.0438L12.5 23.6875L14.3125 22.0438C20.75 16.2 25 12.3438 25 7.625C25 3.76875 21.9813 0.75 18.125 0.75ZM12.6313 20.1938L12.5 20.3125L12.3688 20.1938C6.425 14.8 2.5 11.2375 2.5 7.625C2.5 5.13125 4.38125 3.25 6.875 3.25C8.8 3.25 10.675 4.49375 11.3313 6.2H13.6625C14.325 4.49375 16.2 3.25 18.125 3.25C20.6188 3.25 22.5 5.13125 22.5 7.625C22.5 11.2375 18.575 14.8 12.6313 20.1938Z" fill="#EB6B6B"/>
+                </svg>
+                <svg class="liked-svg offscreen" width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M12.5 23.6875L10.6875 22.0438C4.25 16.2 0 12.3438 0 7.625C0 3.76875 3.01875 0.75 6.875 0.75C9.05 0.75 11.1375 1.7625 12.5 3.35625C13.8625 1.7625 15.95 0.75 18.125 0.75C21.9813 0.75 25 3.76875 25 7.625C25 12.3438 20.75 16.2 14.3125 22.0438L12.5 23.6875Z" fill="#EB6B6B"/>
+                </svg>                  
+              </button>
+            </div>
+          </div>
+          <div class="feed container beni">
+            <div class="user-data">
+              <img src="images/beni.jpg"><div class="text"><div class="name"><b>Beni</b> megosztotta</div><div class="status">Viccesnek érzi magát</div></div>
+            </div>
+            <div class="description">
+              Azt hiszem minél jobban próbálom, annál kevésbé értem az embereket.
+            </div>
+            <div class="like-section">
+              <div class="likes-container">
+                <svg width="74" height="68" viewBox="0 0 74 68" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M37.0002 67.2522L31.744 62.4853C13.0752 45.5384 0.750244 34.3553 0.750244 20.6709C0.750244 9.48777 9.50462 0.733398 20.6877 0.733398C26.9952 0.733398 33.049 3.66965 37.0002 8.29152C40.9515 3.66965 47.0052 0.733398 53.3127 0.733398C64.4959 0.733398 73.2502 9.48777 73.2502 20.6709C73.2502 34.3553 60.9252 45.5384 42.2565 62.4853L37.0002 67.2522Z" fill="#4B7EFF"/>
+                </svg>
+                <span class="likes">213</span>
+                <span class="comment">87 Hozzászólás</span>
+              </div>
+              <button class="like">
+                <svg class="like-svg" width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M18.125 0.75C15.95 0.75 13.8625 1.7625 12.5 3.35625C11.1375 1.7625 9.05 0.75 6.875 0.75C3.01875 0.75 0 3.76875 0 7.625C0 12.3438 4.25 16.2 10.6875 22.0438L12.5 23.6875L14.3125 22.0438C20.75 16.2 25 12.3438 25 7.625C25 3.76875 21.9813 0.75 18.125 0.75ZM12.6313 20.1938L12.5 20.3125L12.3688 20.1938C6.425 14.8 2.5 11.2375 2.5 7.625C2.5 5.13125 4.38125 3.25 6.875 3.25C8.8 3.25 10.675 4.49375 11.3313 6.2H13.6625C14.325 4.49375 16.2 3.25 18.125 3.25C20.6188 3.25 22.5 5.13125 22.5 7.625C22.5 11.2375 18.575 14.8 12.6313 20.1938Z" fill="#EB6B6B"/>
+                </svg>
+                <svg class="liked-svg offscreen" width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M12.5 23.6875L10.6875 22.0438C4.25 16.2 0 12.3438 0 7.625C0 3.76875 3.01875 0.75 6.875 0.75C9.05 0.75 11.1375 1.7625 12.5 3.35625C13.8625 1.7625 15.95 0.75 18.125 0.75C21.9813 0.75 25 3.76875 25 7.625C25 12.3438 20.75 16.2 14.3125 22.0438L12.5 23.6875Z" fill="#EB6B6B"/>
+                  </svg>
+              </button>
+            </div>
+          </div>
+          <div class="feed container hanna">
+            <div class="user-data">
+              <img src="images/hanna.jpg"><div class="text"><div class="name"><b>Hanna</b> megosztotta</div><div class="status">Boldognak érzi magát</div></div>
+            </div>
+            <img src="images/feed/hanna2.jpg">
+            <div class="description">
+              hello nyár
+            </div>
+            <div class="like-section">
+              <div class="likes-container">
+                <svg width="74" height="68" viewBox="0 0 74 68" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M37.0002 67.2522L31.744 62.4853C13.0752 45.5384 0.750244 34.3553 0.750244 20.6709C0.750244 9.48777 9.50462 0.733398 20.6877 0.733398C26.9952 0.733398 33.049 3.66965 37.0002 8.29152C40.9515 3.66965 47.0052 0.733398 53.3127 0.733398C64.4959 0.733398 73.2502 9.48777 73.2502 20.6709C73.2502 34.3553 60.9252 45.5384 42.2565 62.4853L37.0002 67.2522Z" fill="#4B7EFF"/>
+                </svg>
+                <span class="likes">26</span>
+                <span class="comment">13 Hozzászólás</span>
+              </div>
+              <button class="like">
+                <svg class="like-svg" width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M18.125 0.75C15.95 0.75 13.8625 1.7625 12.5 3.35625C11.1375 1.7625 9.05 0.75 6.875 0.75C3.01875 0.75 0 3.76875 0 7.625C0 12.3438 4.25 16.2 10.6875 22.0438L12.5 23.6875L14.3125 22.0438C20.75 16.2 25 12.3438 25 7.625C25 3.76875 21.9813 0.75 18.125 0.75ZM12.6313 20.1938L12.5 20.3125L12.3688 20.1938C6.425 14.8 2.5 11.2375 2.5 7.625C2.5 5.13125 4.38125 3.25 6.875 3.25C8.8 3.25 10.675 4.49375 11.3313 6.2H13.6625C14.325 4.49375 16.2 3.25 18.125 3.25C20.6188 3.25 22.5 5.13125 22.5 7.625C22.5 11.2375 18.575 14.8 12.6313 20.1938Z" fill="#EB6B6B"/>
+                </svg>
+                <svg class="liked-svg offscreen" width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M12.5 23.6875L10.6875 22.0438C4.25 16.2 0 12.3438 0 7.625C0 3.76875 3.01875 0.75 6.875 0.75C9.05 0.75 11.1375 1.7625 12.5 3.35625C13.8625 1.7625 15.95 0.75 18.125 0.75C21.9813 0.75 25 3.76875 25 7.625C25 12.3438 20.75 16.2 14.3125 22.0438L12.5 23.6875Z" fill="#EB6B6B"/>
+                  </svg>
+              </button>
+            </div>
+          </div>
+          <div class="feed container beni">
+            <div class="user-data">
+              <img src="images/beni.jpg"><div class="text"><div class="name"><b>Beni</b> megosztotta</div><div class="status">"cool"nak érzi magát</div></div>
+            </div>
+            <img src="images/feed/beni3.jpg">
+            <div class="description">
+              Kimentünk kicsit a fiúkkal
+            </div>
+            <div class="like-section">
+              <div class="likes-container">
+                <svg width="74" height="68" viewBox="0 0 74 68" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M37.0002 67.2522L31.744 62.4853C13.0752 45.5384 0.750244 34.3553 0.750244 20.6709C0.750244 9.48777 9.50462 0.733398 20.6877 0.733398C26.9952 0.733398 33.049 3.66965 37.0002 8.29152C40.9515 3.66965 47.0052 0.733398 53.3127 0.733398C64.4959 0.733398 73.2502 9.48777 73.2502 20.6709C73.2502 34.3553 60.9252 45.5384 42.2565 62.4853L37.0002 67.2522Z" fill="#4B7EFF"/>
+                </svg>
+                <span class="likes">250</span>
+                <span class="comment">216 Hozzászólás</span>
+              </div>
+              <button class="like">
+                <svg class="like-svg" width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M18.125 0.75C15.95 0.75 13.8625 1.7625 12.5 3.35625C11.1375 1.7625 9.05 0.75 6.875 0.75C3.01875 0.75 0 3.76875 0 7.625C0 12.3438 4.25 16.2 10.6875 22.0438L12.5 23.6875L14.3125 22.0438C20.75 16.2 25 12.3438 25 7.625C25 3.76875 21.9813 0.75 18.125 0.75ZM12.6313 20.1938L12.5 20.3125L12.3688 20.1938C6.425 14.8 2.5 11.2375 2.5 7.625C2.5 5.13125 4.38125 3.25 6.875 3.25C8.8 3.25 10.675 4.49375 11.3313 6.2H13.6625C14.325 4.49375 16.2 3.25 18.125 3.25C20.6188 3.25 22.5 5.13125 22.5 7.625C22.5 11.2375 18.575 14.8 12.6313 20.1938Z" fill="#EB6B6B"/>
+                </svg>
+                <svg class="liked-svg offscreen" width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M12.5 23.6875L10.6875 22.0438C4.25 16.2 0 12.3438 0 7.625C0 3.76875 3.01875 0.75 6.875 0.75C9.05 0.75 11.1375 1.7625 12.5 3.35625C13.8625 1.7625 15.95 0.75 18.125 0.75C21.9813 0.75 25 3.76875 25 7.625C25 12.3438 20.75 16.2 14.3125 22.0438L12.5 23.6875Z" fill="#EB6B6B"/>
+                  </svg>                  
+              </button>
+            </div>
+          </div>
+          <div class="feed container denes">
+            <div class="user-data">
+              <img src="images/denes.jpg"><div class="text"><div class="name"><b>Dénes</b> megosztotta</div><div class="status">Tanácsatalannak érzi magát</div></div>
+            </div>
+            <img src="images/feed/denes2.jpg">
+            <div class="description">
+              Töröm a fejem mit írhatok erre, de semmi szalonképes nem sikerül.
+            </div>
+            <div class="like-section">
+              <div class="likes-container">
+                <svg width="74" height="68" viewBox="0 0 74 68" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M37.0002 67.2522L31.744 62.4853C13.0752 45.5384 0.750244 34.3553 0.750244 20.6709C0.750244 9.48777 9.50462 0.733398 20.6877 0.733398C26.9952 0.733398 33.049 3.66965 37.0002 8.29152C40.9515 3.66965 47.0052 0.733398 53.3127 0.733398C64.4959 0.733398 73.2502 9.48777 73.2502 20.6709C73.2502 34.3553 60.9252 45.5384 42.2565 62.4853L37.0002 67.2522Z" fill="#4B7EFF"/>
+                </svg>
+                <span class="likes">28</span>
+                <span class="comment">9 Hozzászólás</span>
+              </div>
+              <button class="like">
+                <svg class="like-svg" width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M18.125 0.75C15.95 0.75 13.8625 1.7625 12.5 3.35625C11.1375 1.7625 9.05 0.75 6.875 0.75C3.01875 0.75 0 3.76875 0 7.625C0 12.3438 4.25 16.2 10.6875 22.0438L12.5 23.6875L14.3125 22.0438C20.75 16.2 25 12.3438 25 7.625C25 3.76875 21.9813 0.75 18.125 0.75ZM12.6313 20.1938L12.5 20.3125L12.3688 20.1938C6.425 14.8 2.5 11.2375 2.5 7.625C2.5 5.13125 4.38125 3.25 6.875 3.25C8.8 3.25 10.675 4.49375 11.3313 6.2H13.6625C14.325 4.49375 16.2 3.25 18.125 3.25C20.6188 3.25 22.5 5.13125 22.5 7.625C22.5 11.2375 18.575 14.8 12.6313 20.1938Z" fill="#EB6B6B"/>
+                </svg>
+                <svg class="liked-svg offscreen" width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M12.5 23.6875L10.6875 22.0438C4.25 16.2 0 12.3438 0 7.625C0 3.76875 3.01875 0.75 6.875 0.75C9.05 0.75 11.1375 1.7625 12.5 3.35625C13.8625 1.7625 15.95 0.75 18.125 0.75C21.9813 0.75 25 3.76875 25 7.625C25 12.3438 20.75 16.2 14.3125 22.0438L12.5 23.6875Z" fill="#EB6B6B"/>
+                  </svg>
+              </button>
+            </div>
+          </div>
+          <div class="feed container beni">
+            <div class="user-data">
+              <img src="images/beni.jpg"><div class="text"><div class="name"><b>Beni</b> megosztotta</div><div class="status">"cool"nak érzi magát</div></div>
+            </div>
+            <img src="images/feed/beni4.jpg">
+            <div class="description">
+
+            </div>
+            <div class="like-section">
+              <div class="likes-container">
+                <svg width="74" height="68" viewBox="0 0 74 68" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M37.0002 67.2522L31.744 62.4853C13.0752 45.5384 0.750244 34.3553 0.750244 20.6709C0.750244 9.48777 9.50462 0.733398 20.6877 0.733398C26.9952 0.733398 33.049 3.66965 37.0002 8.29152C40.9515 3.66965 47.0052 0.733398 53.3127 0.733398C64.4959 0.733398 73.2502 9.48777 73.2502 20.6709C73.2502 34.3553 60.9252 45.5384 42.2565 62.4853L37.0002 67.2522Z" fill="#4B7EFF"/>
+                </svg>
+                <span class="likes">201</span>
+                <span class="comment">86 Hozzászólás</span>
+              </div>
+              <button class="like">
+                <svg class="like-svg" width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M18.125 0.75C15.95 0.75 13.8625 1.7625 12.5 3.35625C11.1375 1.7625 9.05 0.75 6.875 0.75C3.01875 0.75 0 3.76875 0 7.625C0 12.3438 4.25 16.2 10.6875 22.0438L12.5 23.6875L14.3125 22.0438C20.75 16.2 25 12.3438 25 7.625C25 3.76875 21.9813 0.75 18.125 0.75ZM12.6313 20.1938L12.5 20.3125L12.3688 20.1938C6.425 14.8 2.5 11.2375 2.5 7.625C2.5 5.13125 4.38125 3.25 6.875 3.25C8.8 3.25 10.675 4.49375 11.3313 6.2H13.6625C14.325 4.49375 16.2 3.25 18.125 3.25C20.6188 3.25 22.5 5.13125 22.5 7.625C22.5 11.2375 18.575 14.8 12.6313 20.1938Z" fill="#EB6B6B"/>
+                </svg>
+                <svg class="liked-svg offscreen" width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M12.5 23.6875L10.6875 22.0438C4.25 16.2 0 12.3438 0 7.625C0 3.76875 3.01875 0.75 6.875 0.75C9.05 0.75 11.1375 1.7625 12.5 3.35625C13.8625 1.7625 15.95 0.75 18.125 0.75C21.9813 0.75 25 3.76875 25 7.625C25 12.3438 20.75 16.2 14.3125 22.0438L12.5 23.6875Z" fill="#EB6B6B"/>
+                  </svg>                  
+              </button>
+            </div>
+          </div>
+          <div class="feed container hanna">
+            <div class="user-data">
+              <img src="images/hanna.jpg"><div class="text"><div class="name"><b>Hanna</b> megosztotta</div><span class="status">Szeretve érzi magát</span></div>
+            </div>
+            <img src="images/feed/hanna3.jpg">
+            <div class="description">
+              Yammy! Anyci csinálja a legjobb pizzát a világon. 
+            </div>
+            <div class="like-section">
+              <div class="likes-container">
+                <svg width="74" height="68" viewBox="0 0 74 68" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M37.0002 67.2522L31.744 62.4853C13.0752 45.5384 0.750244 34.3553 0.750244 20.6709C0.750244 9.48777 9.50462 0.733398 20.6877 0.733398C26.9952 0.733398 33.049 3.66965 37.0002 8.29152C40.9515 3.66965 47.0052 0.733398 53.3127 0.733398C64.4959 0.733398 73.2502 9.48777 73.2502 20.6709C73.2502 34.3553 60.9252 45.5384 42.2565 62.4853L37.0002 67.2522Z" fill="#4B7EFF"/>
+                </svg>
+                <span class="likes">65</span>
+                <span class="comment">33 Hozzászólás</span>
+              </div>
+              <button class="like">
+                <svg class="like-svg" width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M18.125 0.75C15.95 0.75 13.8625 1.7625 12.5 3.35625C11.1375 1.7625 9.05 0.75 6.875 0.75C3.01875 0.75 0 3.76875 0 7.625C0 12.3438 4.25 16.2 10.6875 22.0438L12.5 23.6875L14.3125 22.0438C20.75 16.2 25 12.3438 25 7.625C25 3.76875 21.9813 0.75 18.125 0.75ZM12.6313 20.1938L12.5 20.3125L12.3688 20.1938C6.425 14.8 2.5 11.2375 2.5 7.625C2.5 5.13125 4.38125 3.25 6.875 3.25C8.8 3.25 10.675 4.49375 11.3313 6.2H13.6625C14.325 4.49375 16.2 3.25 18.125 3.25C20.6188 3.25 22.5 5.13125 22.5 7.625C22.5 11.2375 18.575 14.8 12.6313 20.1938Z" fill="#EB6B6B"/>
+                </svg>
+                <svg class="liked-svg offscreen" width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M12.5 23.6875L10.6875 22.0438C4.25 16.2 0 12.3438 0 7.625C0 3.76875 3.01875 0.75 6.875 0.75C9.05 0.75 11.1375 1.7625 12.5 3.35625C13.8625 1.7625 15.95 0.75 18.125 0.75C21.9813 0.75 25 3.76875 25 7.625C25 12.3438 20.75 16.2 14.3125 22.0438L12.5 23.6875Z" fill="#EB6B6B"/>
+                  </svg>
+              </button>
+            </div>
+          </div>
+          <div class="feed container beni">
+            <div class="user-data">
+              <img src="images/beni.jpg"><div class="text"><div class="name"><b>Beni</b> megosztotta</div><span class="status">"cool"nak érzi magát</span></div>
+            </div>
+            <img src="images/feed/beni5.jpg">
+            <div class="description">
+              Sose told fullba a kretént &#128512;
+            </div>
+            <div class="like-section">
+              <div class="likes-container">
+                <svg width="74" height="68" viewBox="0 0 74 68" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M37.0002 67.2522L31.744 62.4853C13.0752 45.5384 0.750244 34.3553 0.750244 20.6709C0.750244 9.48777 9.50462 0.733398 20.6877 0.733398C26.9952 0.733398 33.049 3.66965 37.0002 8.29152C40.9515 3.66965 47.0052 0.733398 53.3127 0.733398C64.4959 0.733398 73.2502 9.48777 73.2502 20.6709C73.2502 34.3553 60.9252 45.5384 42.2565 62.4853L37.0002 67.2522Z" fill="#4B7EFF"/>
+                </svg>
+                <span class="likes">230</span>
+                <span class="comment">113 Hozzászólás</span>
+              </div>
+              <button class="like">
+                <svg class="like-svg" width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M18.125 0.75C15.95 0.75 13.8625 1.7625 12.5 3.35625C11.1375 1.7625 9.05 0.75 6.875 0.75C3.01875 0.75 0 3.76875 0 7.625C0 12.3438 4.25 16.2 10.6875 22.0438L12.5 23.6875L14.3125 22.0438C20.75 16.2 25 12.3438 25 7.625C25 3.76875 21.9813 0.75 18.125 0.75ZM12.6313 20.1938L12.5 20.3125L12.3688 20.1938C6.425 14.8 2.5 11.2375 2.5 7.625C2.5 5.13125 4.38125 3.25 6.875 3.25C8.8 3.25 10.675 4.49375 11.3313 6.2H13.6625C14.325 4.49375 16.2 3.25 18.125 3.25C20.6188 3.25 22.5 5.13125 22.5 7.625C22.5 11.2375 18.575 14.8 12.6313 20.1938Z" fill="#EB6B6B"/>
+                </svg>
+                <svg class="liked-svg offscreen" width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M12.5 23.6875L10.6875 22.0438C4.25 16.2 0 12.3438 0 7.625C0 3.76875 3.01875 0.75 6.875 0.75C9.05 0.75 11.1375 1.7625 12.5 3.35625C13.8625 1.7625 15.95 0.75 18.125 0.75C21.9813 0.75 25 3.76875 25 7.625C25 12.3438 20.75 16.2 14.3125 22.0438L12.5 23.6875Z" fill="#EB6B6B"/>
+                  </svg>                  
+              </button>
+            </div>
+          </div>
+          <div class="feed container denes">
+            <div class="user-data">
+              <img src="images/denes.jpg"><div class="text"><div class="name"><b>Dénes</b> megosztotta</div><div class="status"></div></div>
+            </div>
+            <img src="images/feed/denes3.jpg">
+            <div class="description">
+              Hektor kivan,mint állat &#128512;
+            </div>
+            <div class="like-section">
+              <div class="likes-container">
+                <svg width="74" height="68" viewBox="0 0 74 68" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M37.0002 67.2522L31.744 62.4853C13.0752 45.5384 0.750244 34.3553 0.750244 20.6709C0.750244 9.48777 9.50462 0.733398 20.6877 0.733398C26.9952 0.733398 33.049 3.66965 37.0002 8.29152C40.9515 3.66965 47.0052 0.733398 53.3127 0.733398C64.4959 0.733398 73.2502 9.48777 73.2502 20.6709C73.2502 34.3553 60.9252 45.5384 42.2565 62.4853L37.0002 67.2522Z" fill="#4B7EFF"/>
+                </svg>
+                <span class="likes">33</span>
+                <span class="comment">5 Hozzászólás</span>
+              </div>
+              <button class="like">
+                <svg class="like-svg" width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M18.125 0.75C15.95 0.75 13.8625 1.7625 12.5 3.35625C11.1375 1.7625 9.05 0.75 6.875 0.75C3.01875 0.75 0 3.76875 0 7.625C0 12.3438 4.25 16.2 10.6875 22.0438L12.5 23.6875L14.3125 22.0438C20.75 16.2 25 12.3438 25 7.625C25 3.76875 21.9813 0.75 18.125 0.75ZM12.6313 20.1938L12.5 20.3125L12.3688 20.1938C6.425 14.8 2.5 11.2375 2.5 7.625C2.5 5.13125 4.38125 3.25 6.875 3.25C8.8 3.25 10.675 4.49375 11.3313 6.2H13.6625C14.325 4.49375 16.2 3.25 18.125 3.25C20.6188 3.25 22.5 5.13125 22.5 7.625C22.5 11.2375 18.575 14.8 12.6313 20.1938Z" fill="#EB6B6B"/>
+                </svg>
+                <svg class="liked-svg offscreen" width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M12.5 23.6875L10.6875 22.0438C4.25 16.2 0 12.3438 0 7.625C0 3.76875 3.01875 0.75 6.875 0.75C9.05 0.75 11.1375 1.7625 12.5 3.35625C13.8625 1.7625 15.95 0.75 18.125 0.75C21.9813 0.75 25 3.76875 25 7.625C25 12.3438 20.75 16.2 14.3125 22.0438L12.5 23.6875Z" fill="#EB6B6B"/>
+                  </svg>
+              </button>
+            </div>
+          </div>
+          <div class="feed container beni">
+            <div class="user-data">
+              <img src="images/beni.jpg"><div class="text"><div class="name"><b>Beni</b> megosztotta</div><div class="status">Szerelmes hangulatban van</div></div>
+            </div>
+            <img src="images/feed/beni1.jpg">
+            <div class="description">
+              <a style="color:blue">#randi</a> Megvan a saját Csillagom
+            </div>
+            <div class="like-section">
+              <div class="likes-container">
+                <svg width="74" height="68" viewBox="0 0 74 68" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M37.0002 67.2522L31.744 62.4853C13.0752 45.5384 0.750244 34.3553 0.750244 20.6709C0.750244 9.48777 9.50462 0.733398 20.6877 0.733398C26.9952 0.733398 33.049 3.66965 37.0002 8.29152C40.9515 3.66965 47.0052 0.733398 53.3127 0.733398C64.4959 0.733398 73.2502 9.48777 73.2502 20.6709C73.2502 34.3553 60.9252 45.5384 42.2565 62.4853L37.0002 67.2522Z" fill="#4B7EFF"/>
+                </svg>
+                <span class="likes">540</span>
+                <span class="comment">216 Hozzászólás</span>
+              </div>
+              <button class="like">
+                <svg class="like-svg" width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M18.125 0.75C15.95 0.75 13.8625 1.7625 12.5 3.35625C11.1375 1.7625 9.05 0.75 6.875 0.75C3.01875 0.75 0 3.76875 0 7.625C0 12.3438 4.25 16.2 10.6875 22.0438L12.5 23.6875L14.3125 22.0438C20.75 16.2 25 12.3438 25 7.625C25 3.76875 21.9813 0.75 18.125 0.75ZM12.6313 20.1938L12.5 20.3125L12.3688 20.1938C6.425 14.8 2.5 11.2375 2.5 7.625C2.5 5.13125 4.38125 3.25 6.875 3.25C8.8 3.25 10.675 4.49375 11.3313 6.2H13.6625C14.325 4.49375 16.2 3.25 18.125 3.25C20.6188 3.25 22.5 5.13125 22.5 7.625C22.5 11.2375 18.575 14.8 12.6313 20.1938Z" fill="#EB6B6B"/>
+                </svg>
+                <svg class="liked-svg offscreen" width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M12.5 23.6875L10.6875 22.0438C4.25 16.2 0 12.3438 0 7.625C0 3.76875 3.01875 0.75 6.875 0.75C9.05 0.75 11.1375 1.7625 12.5 3.35625C13.8625 1.7625 15.95 0.75 18.125 0.75C21.9813 0.75 25 3.76875 25 7.625C25 12.3438 20.75 16.2 14.3125 22.0438L12.5 23.6875Z" fill="#EB6B6B"/>
+                  </svg>                  
+              </button>
+            </div>
+          </div>
+          <span>Betöltés folyamatban...</span>
+        </div>
+        <div class="menu">
+          <div class="svg">
+            <svg width="24" height="30" viewBox="0 0 24 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 30C13.6575 30 15 28.6575 15 27H9C9 28.6575 10.3425 30 12 30ZM21 21V13.5C21 8.8875 18.5475 5.04 14.25 4.02V3C14.25 1.755 13.245 0.75 12 0.75C10.755 0.75 9.75 1.755 9.75 3V4.02C5.4525 5.04 3 8.8875 3 13.5V21L0 24V25.5H24V24L21 21Z" fill="white"/>
+            </svg>
+          </div>
+          <div class="svg">
+            <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M15 0C6.7125 0 0 6.7125 0 15C0 23.2875 6.7125 30 15 30C23.2875 30 30 23.2875 30 15C30 6.7125 23.2875 0 15 0ZM15 4.5C17.4825 4.5 19.5 6.5175 19.5 9C19.5 11.49 17.4825 13.5 15 13.5C12.5175 13.5 10.5 11.49 10.5 9C10.5 6.5175 12.5175 4.5 15 4.5ZM15 25.8C11.2425 25.8 7.9425 23.88 6 20.97C6.0375 17.9925 12.0075 16.35 15 16.35C17.9925 16.35 23.955 17.9925 24 20.97C22.0575 23.88 18.7575 25.8 15 25.8Z" fill="white"/>
+            </svg>
+          </div>
+          <div class="svg">
+            <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg" class="feed-menu">
+              <g filter="url(#filter0_i_572_110)">
+                <path d="M26 15.5H2C1.175 15.5 0.5 16.175 0.5 17V26C0.5 26.825 1.175 27.5 2 27.5H26C26.825 27.5 27.5 26.825 27.5 26V17C27.5 16.175 26.825 15.5 26 15.5ZM6.5 24.5C4.8425 24.5 3.5 23.1575 3.5 21.5C3.5 19.8425 4.8425 18.5 6.5 18.5C8.1575 18.5 9.5 19.8425 9.5 21.5C9.5 23.1575 8.1575 24.5 6.5 24.5ZM26 0.5H2C1.175 0.5 0.5 1.175 0.5 2V11C0.5 11.825 1.175 12.5 2 12.5H26C26.825 12.5 27.5 11.825 27.5 11V2C27.5 1.175 26.825 0.5 26 0.5ZM6.5 9.5C4.8425 9.5 3.5 8.1575 3.5 6.5C3.5 4.8425 4.8425 3.5 6.5 3.5C8.1575 3.5 9.5 4.8425 9.5 6.5C9.5 8.1575 8.1575 9.5 6.5 9.5Z" fill="#D8D8D8"/>
+              </g>
+              <defs>
+                <filter id="filter0_i_572_110" x="0.5" y="0.5" width="27" height="31" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                  <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+                  <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+                  <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+                  <feOffset dy="4"/>
+                  <feGaussianBlur stdDeviation="2"/>
+                  <feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1"/>
+                  <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"/>
+                  <feBlend mode="normal" in2="shape" result="effect1_innerShadow_572_110"/>
+                </filter>
+              </defs>
+            </svg>
+          </div>
+          <div class="svg">
+            <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg" class="chat-menu">
+              <path d="M27 0H3C1.3425 0 0.015 1.3425 0.015 3L0 30L6 24H27C28.6575 24 30 22.6575 30 21V3C30 1.3425 28.6575 0 27 0ZM6 10.5H24V13.5H6V10.5ZM18 18H6V15H18V18ZM24 9H6V6H24V9Z" fill="white"/>
+            </svg>                                           
+          </div>
+        </div>
+      </div>
+      <div id="chat" class="container offscreen">
+        <div class="content">
+          <div class="header">
+            <h1>Beszélgetés <b>Hektorral</b></h1>
+            <hr>
+          </div>
+          <div class="messages">
+            <div class="messages-container">
+              <div class="message">
+                <img src="images/hektor.jpg">
+                <div>HBD! &#127874;</div>
+              </div>
+            </div>
+          </div>
+          <footer>
+            <div class="typing offscreen">
+              <div class="loader grey small">Loading...</div>
+            </div>
+            <div class="interaction">
+              <input type="text" disabled="" placeholder="Kattints ide az íráshoz">
+              <button class="btn">
+                <svg width="21" height="19" viewBox="0 0 21 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M0.971256 17.0515C0.972277 17.7695 1.7072 18.2525 2.3667 17.9685L19.9031 10.4185C20.7092 10.0715 20.7092 8.92856 19.9031 8.58152L2.36669 1.03149C1.7072 0.747561 0.972277 1.23055 0.971256 1.94856L0.964626 6.60852C0.963912 7.11006 1.33482 7.53455 1.83193 7.6011L8.61229 8.50885C9.76869 8.66367 9.7687 10.3363 8.6123 10.4912L1.83193 11.3989C1.33483 11.4655 0.963912 11.89 0.964626 12.3915L0.971256 17.0515Z" fill="#F8F8F8"/>
+                </svg>                  
+              </button>
+            </div>
+            <div>
+              <div class="answer">
+                <hr>
+                <div class="explanation">Válaszd ki mit mondasz</div>
+                <div class="option">
+                  <div class="message sent">
+                    <img src="images/profile.jpg">
+                    <div>Köszi! Te vagy az egyetlen, aki felköszöntött.</div>
+                  </div>
+                  <div class="message">
+                    <img src="images/hektor.jpg">
+                    <div>Mert én vagyok az egyetlen haverod &#128512;</div>
+                  </div>
+                </div>
+              </div>
+              <div class="answer">
+                <hr>
+                <div class="explanation">Válaszd ki mit mondasz</div>
+                <div class="option">
+                  <div class="message sent">
+                    <img src="images/profile.jpg">
+                    <div>NEM! Hanem, mert senki más nem tudja,mikor van a szülinapom. De mostmár tudni fogja az egész suli! Felregeltem &#128512;</div>
+                  </div>
+                  <div class="message">
+                    <img src="images/hektor.jpg">
+                    <div>Megkaptad a telót????</div>
+                  </div>
+                </div>
+              </div>
+              <div class="answer">
+                <hr>
+                <div class="explanation">Válaszd ki mit mondasz</div>
+                <div class="option">
+                  <div class="message sent">
+                    <img src="images/profile.jpg">
+                    <div>Aha! &#128512;</div>
+                  </div>
+                  <div class="message">
+                    <img src="images/hektor.jpg">
+                    <div>Na végre, üdv a 21. században &#128512 És hogy mentek bele?</div>
+                  </div>
+                </div>
+              </div>
+              <div class="answer">
+                <hr>
+                <div class="explanation">Válaszd ki mit mondasz</div>
+                <div class="option">
+                  <div class="message sent">
+                    <img src="images/profile.jpg">
+                    <div>Apámtól kaptam, az 5-ös biziért. Anyám kivolt, szerinte csak felnőtteknek lenne szabad okostelefont használni.</div>
+                  </div>
+                  <div class="message">
+                    <img src="images/hektor.jpg">
+                    <div>Kapsz egy lájkot a képedre, csak hogy mindenki lássa, milyen jófej haverjaid vannak.</div>
+                  </div>
+                </div>
+              </div>
+              <div class="answer">
+                <hr>
+                <div class="explanation">Válaszd ki mit mondasz</div>
+                <div class="option" like="100">
+                  <div class="message sent">
+                    <img src="images/profile.jpg">
+                    <div>Hát a te lájkoddal nem hiszem, hogy beljebb vagyok &#128512;</div>
+                  </div>
+                  <div class="message" no="1">
+                    <img src="images/hektor.jpg">
+                    <div>&#128405; &#128512;</div>
+                  </div>
+                  <div class="message" no="2">
+                    <img src="images/hektor.jpg">
+                    <div><img src="images/feed/popecondom.jpg"></div>
+                  </div>
+                </div>
+                <div class="option" like="0">
+                  <div class="message sent">
+                    <img src="images/profile.jpg">
+                    <div>Kösz! Add meg a kezdőlökést, úgyis mindjárt beindul a lájkcunami &#128512;</div>
+                  </div>
+                  <div class="message" no="1">
+                    <img src="images/hektor.jpg">
+                    <div>Szeretnéd &#128512;</div>
+                  </div>
+                  <div class="message" no="2">
+                    <img src="images/hektor.jpg">
+                    <div><img src="images/feed/popecondom.jpg"></div>
+                  </div>
+                </div>
+              </div>
+              <div class="answer">
+                <hr>
+                <div class="explanation">Válaszd ki mit mondasz</div>
+                <div class="option">
+                  <div class="message sent">
+                    <img src="images/profile.jpg">
+                    <div>&#128550; Ezt meg honnan szerváltad?</div>
+                  </div>
+                  <div class="message">
+                    <img src="images/hektor.jpg">
+                    <div>Anyámék szekrényében találtam. Anyámék dugnak. Ez undorító.</div>
+                  </div>
+                </div>
+              </div>
+              <div class="answer">
+                <hr>
+                <div class="explanation">Válaszd ki mit mondasz</div>
+                <div class="option" like="100">
+                  <div class="message sent">
+                    <img src="images/profile.jpg">
+                    <div>Miért ne csinálhatnák? Anyád jó csaj.</div>
+                  </div>
+                  <div class="message">
+                    <img src="images/hektor.jpg">
+                    <div>Anyám nem jó csaj.</div>
+                  </div>
+                </div>
+                <div class="option" removeId="extraRemove-1">
+                  <div class="message sent">
+                    <img src="images/profile.jpg">
+                    <div>Úristen, ez tényleg nagyon gáz!</div>
+                  </div>
+                  <div class="message">
+                    <img src="images/hektor.jpg">
+                    <div>Ugye?? Undorító rágondolni!</div>
+                  </div>
+                </div>
+              </div>
+              <div class="answer" removeId="extraRemove-1">
+                <hr>
+                <div class="explanation">Válaszd ki mit mondasz</div>
+                <div class="option">
+                  <div class="message sent">
+                    <img src="images/profile.jpg">
+                    <div>Akkor mi?</div>
+                  </div>
+                  <div class="message">
+                    <img src="images/hektor.jpg">
+                    <div>Anyám az az anyám. Nem egy csaj. Áááá, undorító rágondolni.</div>
+                  </div>
+                </div>
+              </div>
+              <div class="answer">
+                <hr>
+                <div class="explanation">Válaszd ki mit mondasz</div>
+                <div class="option">
+                  <div class="message sent">
+                    <img src="images/profile.jpg">
+                    <div>Akkor ne gondolj rá!</div>
+                  </div>
+                  <div class="message">
+                    <img src="images/hektor.jpg">
+                    <div>Tényleg, ha már dugás… Szerintem Beni meg Csillag összejöttek.</div>
+                  </div>
+                </div>
+              </div>
+              <div class="answer">
+                <hr>
+                <div class="explanation">Válaszd ki mit mondasz</div>
+                <div class="option">
+                  <div class="message sent">
+                    <img src="images/profile.jpg">
+                    <div>Mi vaaaaan?</div>
+                  </div>
+                  <div class="message">
+                    <img src="images/hektor.jpg">
+                    <div>Láttad, Beni mit írt a képe alá?</div>
+                  </div>
+                </div>
+              </div>
+              <div class="answer">
+                <hr>
+                <div class="explanation">Válaszd ki mit mondasz</div>
+                <div class="option">
+                  <div class="message sent">
+                    <img src="images/profile.jpg">
+                    <div>Nem!</div>
+                  </div>
+                  <div class="message">
+                    <img src="images/hektor.jpg">
+                    <div><img src="images/feed/beni1.jpg"><div class="description">
+                      <a style="color:blue">#randi</a> Megvan a saját Csillagom
+                    </div></div>
+                  </div>
+                  <div class="message">
+                    <img src="images/hektor.jpg">
+                    <div>Hát, jobb ha belehúzol az ismerkedésbe, mert Mr. LájkBáró nagyon nyomul a csajra.</div>
+                  </div>
+                </div>
+              </div>
+              <div class="answer">
+                <hr>
+                <div class="explanation">Válaszd ki mit mondasz</div>
+                <div class="option">
+                  <div class="message sent">
+                    <img src="images/profile.jpg">
+                    <div>&#129324;</div>
+                  </div>
+                  <div class="message">
+                    <img src="images/hektor.jpg">
+                    <div>Jelöld be Csillagot!</div>
+                  </div>
+                </div>
+              </div>
+              <div class="answer">
+                <hr>
+                <div class="explanation">Válaszd ki mit mondasz</div>
+                <div class="option">
+                  <div class="message sent">
+                    <img src="images/profile.jpg">
+                    <div>Úgyse jelölne vissza.</div>
+                  </div>
+                  <div class="message">
+                    <img src="images/hektor.jpg">
+                    <div>Legalább akkor kinyáladzanád magad a képeire otthon, és nem nekem áradoznál róla óra közben.</div>
+                  </div>
+                </div>
+              </div>
+              <div class="answer">
+                <hr>
+                <div class="explanation">Válaszd ki mit mondasz</div>
+                <div class="option">
+                  <div class="message sent">
+                    <img src="images/profile.jpg">
+                    <div>Csak a menő arcokkal barátkozik.</div>
+                  </div>
+                </div>
+              </div>
+              <div class="answer">
+                <hr>
+                <div class="explanation">Válaszd ki mit mondasz</div>
+                <div class="option">
+                  <div class="message sent">
+                    <img src="images/profile.jpg">
+                    <div>Meg az olyan seggfejekkel mint a Beni...</div>
+                  </div>
+                  <div class="message">
+                    <img src="images/hektor.jpg">
+                    <div>Mondjuk, szerintem ne akarj olyan lenni, mint a Beni.</div>
+                  </div>
+                  <div class="message">
+                    <img src="images/hektor.jpg">
+                    <div>Na, most megyek, mert ellenőrök vannak, és megint nincs bérletem. Anyámék kinyírnak, ha megint megbüntetnek.</div>
+                  </div>
+                </div>
+              </div>
+              <div class="answer">
+                <hr>
+                <div class="explanation">Válaszd ki mit mondasz</div>
+                <div class="option" like="100">
+                  <div class="message sent">
+                    <img src="images/profile.jpg">
+                    <div>Nem kéne PS-re elverni a zsebpénzt, Hekus!</div>
+                  </div>
+                  <div class="message">
+                    <img src="images/hektor.jpg">
+                    <div>Kuss &#128512; Akkor nem sírtál, amikor Mortal Maratont nyomtunk!</div>
+                  </div>
+                  <div class="message">
+                    <img src="images/hektor.jpg">
+                    <div>Na bent talizunk, bioszon!</div>
+                  </div>
+                </div>
+                <div class="option" like="0">
+                  <div class="message sent">
+                    <img src="images/profile.jpg">
+                    <div>Vigyázz az orkokkal, lassúak, de kartávolságban halálosak! &#128512;</div>
+                  </div>
+                  <div class="message">
+                    <img src="images/hektor.jpg">
+                    <div>Le-előre-kisütéssel kivégzem őket!</div>
+                  </div>
+                  <div class="message">
+                    <img src="images/hektor.jpg">
+                    <div>Na bent talizunk, bioszon!</div>
+                  </div>
+                </div>
+              </div>
+              <div class="answer">
+                <hr>
+                <div class="explanation">Válaszd ki mit mondasz</div>
+                <div class="option" like="0">
+                  <div class="message sent">
+                    <img src="images/profile.jpg">
+                    <div>Ok! Hello!</div>
+                  </div>
+                  <div class="message">
+                    <img src="images/hektor.jpg">
+                    <div>Tessék, itt a szülinapi ajándékod &#128512;</div>
+                  </div>
+                  <div class="message">
+                    <img src="images/hektor.jpg">
+                    <div id="csillag-profile-link-chat"><a style="color:blue">https://mass.hu/Csillag_profilja</a></div>
+                  </div>
+                </div>
+              </div>
+              <div class="answer delay">
+                <hr>
+                <div class="explanation">Válaszd ki mit mondasz</div>
+                <div class="option" like="0">
+                  <div class="message sent">
+                    <img src="images/profile.jpg">
+                    <div>Áh… like korlátos</div>
+                  </div>
+                  <div class="message">
+                    <img src="images/hektor.jpg">
+                    <div>basszus az neked soha nem fog menni. &#128512;</div>
+                  </div>
+                </div>
+              </div>
+              <div class="answer delay">
+                <hr>
+                <div class="explanation">Válaszd ki mit mondasz</div>
+                <div class="option" like="0">
+                  <div class="message sent">
+                    <img src="images/profile.jpg">
+                    <div>Mekkora paraszt vagy!</div>
+                  </div>
+                  <div class="message">
+                    <img src="images/hektor.jpg">
+                    <div>De komolyan az a nagyok játéka, Beni meg a többi köcsög…</div>
+                  </div>
+                </div>
+              </div>
+              <div class="answer delay">
+                <hr>
+                <div class="explanation">Válaszd ki mit mondasz</div>
+                <div class="option" like="0">
+                  <div class="message sent">
+                    <img src="images/profile.jpg">
+                    <div>…</div>
+                  </div>
+                  <div class="message">
+                    <img src="images/hektor.jpg">
+                    <div install-randi-maker>na figyelj ha minden kötél szakad még leszedhetsz egy like vadász appot &#128512; nézd itt van : <a style="color: blue;">Randi maker telepítése</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="answer delay">
+                <hr>
+                <div class="explanation">Válaszd ki mit mondasz</div>
+                <div class="option" like="0">
+                  <div class="message sent" install-randi-maker>
+                    <img src="images/profile.jpg">
+                    <div>telepítem a randi makert</div>
+                  </div>
+                </div>
+                <div class="option" like="0">
+                  <div class="message sent">
+                    <img src="images/profile.jpg">
+                    <div>na ez tényleg egy fasság…</div>
+                  </div>
+                  <div class="message" go-to-feed>
+                    <img src="images/hektor.jpg">
+                    <div>na én lépek</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </footer>
+        </div>
+        <div class="menu">
+          <div class="svg">
+            <svg width="24" height="30" viewBox="0 0 24 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 30C13.6575 30 15 28.6575 15 27H9C9 28.6575 10.3425 30 12 30ZM21 21V13.5C21 8.8875 18.5475 5.04 14.25 4.02V3C14.25 1.755 13.245 0.75 12 0.75C10.755 0.75 9.75 1.755 9.75 3V4.02C5.4525 5.04 3 8.8875 3 13.5V21L0 24V25.5H24V24L21 21Z" fill="white"/>
+            </svg>
+          </div>
+          <div class="svg">
+            <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M15 0C6.7125 0 0 6.7125 0 15C0 23.2875 6.7125 30 15 30C23.2875 30 30 23.2875 30 15C30 6.7125 23.2875 0 15 0ZM15 4.5C17.4825 4.5 19.5 6.5175 19.5 9C19.5 11.49 17.4825 13.5 15 13.5C12.5175 13.5 10.5 11.49 10.5 9C10.5 6.5175 12.5175 4.5 15 4.5ZM15 25.8C11.2425 25.8 7.9425 23.88 6 20.97C6.0375 17.9925 12.0075 16.35 15 16.35C17.9925 16.35 23.955 17.9925 24 20.97C22.0575 23.88 18.7575 25.8 15 25.8Z" fill="white"/>
+            </svg>
+          </div>
+          <div class="svg">
+            <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg" class="feed-menu">
+              <path d="M26 15.5H2C1.175 15.5 0.5 16.175 0.5 17V26C0.5 26.825 1.175 27.5 2 27.5H26C26.825 27.5 27.5 26.825 27.5 26V17C27.5 16.175 26.825 15.5 26 15.5ZM6.5 24.5C4.8425 24.5 3.5 23.1575 3.5 21.5C3.5 19.8425 4.8425 18.5 6.5 18.5C8.1575 18.5 9.5 19.8425 9.5 21.5C9.5 23.1575 8.1575 24.5 6.5 24.5ZM26 0.5H2C1.175 0.5 0.5 1.175 0.5 2V11C0.5 11.825 1.175 12.5 2 12.5H26C26.825 12.5 27.5 11.825 27.5 11V2C27.5 1.175 26.825 0.5 26 0.5ZM6.5 9.5C4.8425 9.5 3.5 8.1575 3.5 6.5C3.5 4.8425 4.8425 3.5 6.5 3.5C8.1575 3.5 9.5 4.8425 9.5 6.5C9.5 8.1575 8.1575 9.5 6.5 9.5Z" fill="white"/>
+            </svg>
+          </div>
+          <div class="svg">
+            <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M27 0H3C1.3425 0 0.015 1.3425 0.015 3L0 30L6 24H27C28.6575 24 30 22.6575 30 21V3C30 1.3425 28.6575 0 27 0ZM6 10.5H24V13.5H6V10.5ZM18 18H6V15H18V18ZM24 9H6V6H24V9Z" fill="#D8D8D8"/>
+            </svg>              
+          </div>
+            
+        </div>
+        <div id="hektor-chat2" class="offscreen">
+          <div class="messages-container">
+            <div class="message">
+              <img src="images/hektor.jpg">
+              <div>Na bejelölted?</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="csillag" class="container offscreen">
+        <div class="feed-header">
+          <div class="logo">Mass</div>
+          <div class="likes-container need-to-update">
+            <svg width="74" height="68" viewBox="0 0 74 68" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M37.0002 67.2522L31.744 62.4853C13.0752 45.5384 0.750244 34.3553 0.750244 20.6709C0.750244 9.48777 9.50462 0.733398 20.6877 0.733398C26.9952 0.733398 33.049 3.66965 37.0002 8.29152C40.9515 3.66965 47.0052 0.733398 53.3127 0.733398C64.4959 0.733398 73.2502 9.48777 73.2502 20.6709C73.2502 34.3553 60.9252 45.5384 42.2565 62.4853L37.0002 67.2522Z" fill="#4B7EFF"/>
+            </svg>
+            <span class="likes"></span>
+          </div>
+        </div>
+        <hr>
+        <div class="feed-content">
+          <div class="feed container">
+            <div class="csillag-container">
+              <div class="head">
+                <img src="images/csillag.jpg" alt="Csillag">
+                <div class="personal-data">
+                  <div>
+                    <span>Csillag</span><span class="age"> (16)</span>
+                  </div>
+                  <div class="likes-container csillag">
+                    <svg width="74" height="68" viewBox="0 0 74 68" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M37.0002 67.2522L31.744 62.4853C13.0752 45.5384 0.750244 34.3553 0.750244 20.6709C0.750244 9.48777 9.50462 0.733398 20.6877 0.733398C26.9952 0.733398 33.049 3.66965 37.0002 8.29152C40.9515 3.66965 47.0052 0.733398 53.3127 0.733398C64.4959 0.733398 73.2502 9.48777 73.2502 20.6709C73.2502 34.3553 60.9252 45.5384 42.2565 62.4853L37.0002 67.2522Z" fill="#4B7EFF"/>
+                    </svg>
+                    <span class="likes">4700</span>
+                  </div>
+                </div>
+                <div class="sorry">Sajnáljuk, nem tudsz üzenetet küldeni ennek a felhasználónak</div>
+              </div>
+              <div class="school">Teleki Blanka Gimnázium - Matek fact</div>
+              <div class="music">Kedvenc zene : Transz metál</div>
+              <div class="btn" id="freiand-req-csillag">Ismerősnek jelölöm</div>
+            </div>
+          </div>
+          <div class="feed container">
+            <div class="user-data">
+              <img src="images/csillag.jpg" alt="Csillag"><div class="text"><div class="name"><b>Csillag</b> megosztotta</div><div class="status">Felfedező kedvében van</div></div>
+            </div>
+            <img src="images/feed/csillag1.jpg">
+            <div class="description">
+              Zsiráfmacska. (A pukli mögötte egy hangszer tokja, nem az állatka része. &#128570; )
+            </div>
+            <div class="like-section">
+              <div class="likes-container">
+                <svg width="74" height="68" viewBox="0 0 74 68" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M37.0002 67.2522L31.744 62.4853C13.0752 45.5384 0.750244 34.3553 0.750244 20.6709C0.750244 9.48777 9.50462 0.733398 20.6877 0.733398C26.9952 0.733398 33.049 3.66965 37.0002 8.29152C40.9515 3.66965 47.0052 0.733398 53.3127 0.733398C64.4959 0.733398 73.2502 9.48777 73.2502 20.6709C73.2502 34.3553 60.9252 45.5384 42.2565 62.4853L37.0002 67.2522Z" fill="#4B7EFF"/>
+                </svg>
+                <span class="likes">321</span>
+                <span class="comment">196 Hozzászólás</span>
+              </div>
+              <button class="like">
+                <svg class="like-svg" width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M18.125 0.75C15.95 0.75 13.8625 1.7625 12.5 3.35625C11.1375 1.7625 9.05 0.75 6.875 0.75C3.01875 0.75 0 3.76875 0 7.625C0 12.3438 4.25 16.2 10.6875 22.0438L12.5 23.6875L14.3125 22.0438C20.75 16.2 25 12.3438 25 7.625C25 3.76875 21.9813 0.75 18.125 0.75ZM12.6313 20.1938L12.5 20.3125L12.3688 20.1938C6.425 14.8 2.5 11.2375 2.5 7.625C2.5 5.13125 4.38125 3.25 6.875 3.25C8.8 3.25 10.675 4.49375 11.3313 6.2H13.6625C14.325 4.49375 16.2 3.25 18.125 3.25C20.6188 3.25 22.5 5.13125 22.5 7.625C22.5 11.2375 18.575 14.8 12.6313 20.1938Z" fill="#EB6B6B"/>
+                </svg>
+                <svg class="liked-svg offscreen" width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M12.5 23.6875L10.6875 22.0438C4.25 16.2 0 12.3438 0 7.625C0 3.76875 3.01875 0.75 6.875 0.75C9.05 0.75 11.1375 1.7625 12.5 3.35625C13.8625 1.7625 15.95 0.75 18.125 0.75C21.9813 0.75 25 3.76875 25 7.625C25 12.3438 20.75 16.2 14.3125 22.0438L12.5 23.6875Z" fill="#EB6B6B"/>
+                  </svg>                  
+              </button>
+            </div>
+          </div>
+          <div class="feed container">
+            <div class="user-data">
+              <img src="images/csillag.jpg" alt="Csillag"><div class="text"><div class="name"><b>Csillag</b> megosztotta</div><div class="status">Boldognak érzi magát</div></div>
+            </div>
+            <img src="images/feed/csillag2.jpg">
+            <div class="description">
+              Nagyon boldog szülinapot kívánok! <a style="color: blue;">@Beni</a>
+            </div>
+            <div class="like-section">
+              <div class="likes-container">
+                <svg width="74" height="68" viewBox="0 0 74 68" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M37.0002 67.2522L31.744 62.4853C13.0752 45.5384 0.750244 34.3553 0.750244 20.6709C0.750244 9.48777 9.50462 0.733398 20.6877 0.733398C26.9952 0.733398 33.049 3.66965 37.0002 8.29152C40.9515 3.66965 47.0052 0.733398 53.3127 0.733398C64.4959 0.733398 73.2502 9.48777 73.2502 20.6709C73.2502 34.3553 60.9252 45.5384 42.2565 62.4853L37.0002 67.2522Z" fill="#4B7EFF"/>
+                </svg>
+                <span class="likes">430</span>
+                <span class="comment">367 Hozzászólás</span>
+              </div>
+              <button class="like">
+                <svg class="like-svg" width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M18.125 0.75C15.95 0.75 13.8625 1.7625 12.5 3.35625C11.1375 1.7625 9.05 0.75 6.875 0.75C3.01875 0.75 0 3.76875 0 7.625C0 12.3438 4.25 16.2 10.6875 22.0438L12.5 23.6875L14.3125 22.0438C20.75 16.2 25 12.3438 25 7.625C25 3.76875 21.9813 0.75 18.125 0.75ZM12.6313 20.1938L12.5 20.3125L12.3688 20.1938C6.425 14.8 2.5 11.2375 2.5 7.625C2.5 5.13125 4.38125 3.25 6.875 3.25C8.8 3.25 10.675 4.49375 11.3313 6.2H13.6625C14.325 4.49375 16.2 3.25 18.125 3.25C20.6188 3.25 22.5 5.13125 22.5 7.625C22.5 11.2375 18.575 14.8 12.6313 20.1938Z" fill="#EB6B6B"/>
+                </svg>
+                <svg class="liked-svg offscreen" width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M12.5 23.6875L10.6875 22.0438C4.25 16.2 0 12.3438 0 7.625C0 3.76875 3.01875 0.75 6.875 0.75C9.05 0.75 11.1375 1.7625 12.5 3.35625C13.8625 1.7625 15.95 0.75 18.125 0.75C21.9813 0.75 25 3.76875 25 7.625C25 12.3438 20.75 16.2 14.3125 22.0438L12.5 23.6875Z" fill="#EB6B6B"/>
+                  </svg>                  
+              </button>
+            </div>
+          </div>
+          <div class="feed container">
+            <div class="user-data">
+              <img src="images/csillag.jpg" alt="Csillag"><div class="text"><div class="name"><b>Csillag</b> megosztotta</div><div class="status">Szeretve érzi magát</div></div>
+            </div>
+            <img src="images/feed/csillag3.jpg">
+            <div class="description">
+              Mindben szuperjó vagyok!
+            </div>
+            <div class="like-section">
+              <div class="likes-container">
+                <svg width="74" height="68" viewBox="0 0 74 68" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M37.0002 67.2522L31.744 62.4853C13.0752 45.5384 0.750244 34.3553 0.750244 20.6709C0.750244 9.48777 9.50462 0.733398 20.6877 0.733398C26.9952 0.733398 33.049 3.66965 37.0002 8.29152C40.9515 3.66965 47.0052 0.733398 53.3127 0.733398C64.4959 0.733398 73.2502 9.48777 73.2502 20.6709C73.2502 34.3553 60.9252 45.5384 42.2565 62.4853L37.0002 67.2522Z" fill="#4B7EFF"/>
+                </svg>
+                <span class="likes">120</span>
+                <span class="comment">99 Hozzászólás</span>
+              </div>
+              <button class="like">
+                <svg class="like-svg" width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M18.125 0.75C15.95 0.75 13.8625 1.7625 12.5 3.35625C11.1375 1.7625 9.05 0.75 6.875 0.75C3.01875 0.75 0 3.76875 0 7.625C0 12.3438 4.25 16.2 10.6875 22.0438L12.5 23.6875L14.3125 22.0438C20.75 16.2 25 12.3438 25 7.625C25 3.76875 21.9813 0.75 18.125 0.75ZM12.6313 20.1938L12.5 20.3125L12.3688 20.1938C6.425 14.8 2.5 11.2375 2.5 7.625C2.5 5.13125 4.38125 3.25 6.875 3.25C8.8 3.25 10.675 4.49375 11.3313 6.2H13.6625C14.325 4.49375 16.2 3.25 18.125 3.25C20.6188 3.25 22.5 5.13125 22.5 7.625C22.5 11.2375 18.575 14.8 12.6313 20.1938Z" fill="#EB6B6B"/>
+                </svg>
+                <svg class="liked-svg offscreen" width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M12.5 23.6875L10.6875 22.0438C4.25 16.2 0 12.3438 0 7.625C0 3.76875 3.01875 0.75 6.875 0.75C9.05 0.75 11.1375 1.7625 12.5 3.35625C13.8625 1.7625 15.95 0.75 18.125 0.75C21.9813 0.75 25 3.76875 25 7.625C25 12.3438 20.75 16.2 14.3125 22.0438L12.5 23.6875Z" fill="#EB6B6B"/>
+                  </svg>                  
+              </button>
+            </div>
+          </div>
+          <div class="feed container">
+            <div class="user-data">
+              <img src="images/csillag.jpg" alt="Csillag"><div class="text"><div class="name"><b>Csillag</b> megosztotta</div><div class="status">Kreatív hangulatban van</div></div>
+            </div>
+            <img src="images/feed/csillag4.jpg">
+            <div class="description">
+              Szuperszonik pszichedelik, avagy 'nincs még rajta elég szín/Hold/világítós festék, fér még oda...!' Művészeti értéket viszünk az erdőbe. (Vagy nem.) Világítani fog. Vagy nem. De én jól éreztem magam alkotás közben... vagy igen.
+            </div>
+            <div class="like-section">
+              <div class="likes-container">
+                <svg width="74" height="68" viewBox="0 0 74 68" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M37.0002 67.2522L31.744 62.4853C13.0752 45.5384 0.750244 34.3553 0.750244 20.6709C0.750244 9.48777 9.50462 0.733398 20.6877 0.733398C26.9952 0.733398 33.049 3.66965 37.0002 8.29152C40.9515 3.66965 47.0052 0.733398 53.3127 0.733398C64.4959 0.733398 73.2502 9.48777 73.2502 20.6709C73.2502 34.3553 60.9252 45.5384 42.2565 62.4853L37.0002 67.2522Z" fill="#4B7EFF"/>
+                </svg>
+                <span class="likes">205</span>
+                <span class="comment">79 Hozzászólás</span>
+              </div>
+              <button class="like">
+                <svg class="like-svg" width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M18.125 0.75C15.95 0.75 13.8625 1.7625 12.5 3.35625C11.1375 1.7625 9.05 0.75 6.875 0.75C3.01875 0.75 0 3.76875 0 7.625C0 12.3438 4.25 16.2 10.6875 22.0438L12.5 23.6875L14.3125 22.0438C20.75 16.2 25 12.3438 25 7.625C25 3.76875 21.9813 0.75 18.125 0.75ZM12.6313 20.1938L12.5 20.3125L12.3688 20.1938C6.425 14.8 2.5 11.2375 2.5 7.625C2.5 5.13125 4.38125 3.25 6.875 3.25C8.8 3.25 10.675 4.49375 11.3313 6.2H13.6625C14.325 4.49375 16.2 3.25 18.125 3.25C20.6188 3.25 22.5 5.13125 22.5 7.625C22.5 11.2375 18.575 14.8 12.6313 20.1938Z" fill="#EB6B6B"/>
+                </svg>
+                <svg class="liked-svg offscreen" width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M12.5 23.6875L10.6875 22.0438C4.25 16.2 0 12.3438 0 7.625C0 3.76875 3.01875 0.75 6.875 0.75C9.05 0.75 11.1375 1.7625 12.5 3.35625C13.8625 1.7625 15.95 0.75 18.125 0.75C21.9813 0.75 25 3.76875 25 7.625C25 12.3438 20.75 16.2 14.3125 22.0438L12.5 23.6875Z" fill="#EB6B6B"/>
+                  </svg>                  
+              </button>
+            </div>
+          </div>
+          <div class="feed container">
+            <div class="user-data">
+              <img src="images/csillag.jpg" alt="Csillag"><div class="text"><div class="name"><b>Csillag</b> megosztotta</div><div class="status">Boldognak érzi magát</div></div>
+            </div>
+            <img src="images/feed/csillag5.jpg">
+            <div class="description">
+              Nem vagyok ott, mert itt vagyok, de innen támogatlak titeket! (Na ki fedez fel több világcsücsköt a képen...? &#127752;
+            </div>
+            <div class="like-section">
+              <div class="likes-container">
+                <svg width="74" height="68" viewBox="0 0 74 68" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M37.0002 67.2522L31.744 62.4853C13.0752 45.5384 0.750244 34.3553 0.750244 20.6709C0.750244 9.48777 9.50462 0.733398 20.6877 0.733398C26.9952 0.733398 33.049 3.66965 37.0002 8.29152C40.9515 3.66965 47.0052 0.733398 53.3127 0.733398C64.4959 0.733398 73.2502 9.48777 73.2502 20.6709C73.2502 34.3553 60.9252 45.5384 42.2565 62.4853L37.0002 67.2522Z" fill="#4B7EFF"/>
+                </svg>
+                <span class="likes">300</span>
+                <span class="comment">57 Hozzászólás</span>
+              </div>
+              <button class="like">
+                <svg class="like-svg" width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M18.125 0.75C15.95 0.75 13.8625 1.7625 12.5 3.35625C11.1375 1.7625 9.05 0.75 6.875 0.75C3.01875 0.75 0 3.76875 0 7.625C0 12.3438 4.25 16.2 10.6875 22.0438L12.5 23.6875L14.3125 22.0438C20.75 16.2 25 12.3438 25 7.625C25 3.76875 21.9813 0.75 18.125 0.75ZM12.6313 20.1938L12.5 20.3125L12.3688 20.1938C6.425 14.8 2.5 11.2375 2.5 7.625C2.5 5.13125 4.38125 3.25 6.875 3.25C8.8 3.25 10.675 4.49375 11.3313 6.2H13.6625C14.325 4.49375 16.2 3.25 18.125 3.25C20.6188 3.25 22.5 5.13125 22.5 7.625C22.5 11.2375 18.575 14.8 12.6313 20.1938Z" fill="#EB6B6B"/>
+                </svg>
+                <svg class="liked-svg offscreen" width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M12.5 23.6875L10.6875 22.0438C4.25 16.2 0 12.3438 0 7.625C0 3.76875 3.01875 0.75 6.875 0.75C9.05 0.75 11.1375 1.7625 12.5 3.35625C13.8625 1.7625 15.95 0.75 18.125 0.75C21.9813 0.75 25 3.76875 25 7.625C25 12.3438 20.75 16.2 14.3125 22.0438L12.5 23.6875Z" fill="#EB6B6B"/>
+                  </svg>                  
+              </button>
+            </div>
+          </div>
+          <div class="feed container">
+            <div class="user-data">
+              <img src="images/csillag.jpg" alt="Csillag"><div class="text"><div class="name"><b>Csillag</b> megosztotta</div><div class="status">Boldognak érzi magát</div></div>
+            </div>
+            <img src="images/feed/csillag6.jpg">
+            <div class="description">
+              A tegnapi vihar után <a style="color: blue;">Ágnes Alma Upor</a> erkélyéről, különösen <a style="color: blue;">Tünde Kissnek</a> ajánlva <a style="color: blue;">#nofilter #felhők #óegek</a>
+            </div>
+            <div class="like-section">
+              <div class="likes-container">
+                <svg width="74" height="68" viewBox="0 0 74 68" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M37.0002 67.2522L31.744 62.4853C13.0752 45.5384 0.750244 34.3553 0.750244 20.6709C0.750244 9.48777 9.50462 0.733398 20.6877 0.733398C26.9952 0.733398 33.049 3.66965 37.0002 8.29152C40.9515 3.66965 47.0052 0.733398 53.3127 0.733398C64.4959 0.733398 73.2502 9.48777 73.2502 20.6709C73.2502 34.3553 60.9252 45.5384 42.2565 62.4853L37.0002 67.2522Z" fill="#4B7EFF"/>
+                </svg>
+                <span class="likes">240</span>
+                <span class="comment">79 Hozzászólás</span>
+              </div>
+              <button class="like">
+                <svg class="like-svg" width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M18.125 0.75C15.95 0.75 13.8625 1.7625 12.5 3.35625C11.1375 1.7625 9.05 0.75 6.875 0.75C3.01875 0.75 0 3.76875 0 7.625C0 12.3438 4.25 16.2 10.6875 22.0438L12.5 23.6875L14.3125 22.0438C20.75 16.2 25 12.3438 25 7.625C25 3.76875 21.9813 0.75 18.125 0.75ZM12.6313 20.1938L12.5 20.3125L12.3688 20.1938C6.425 14.8 2.5 11.2375 2.5 7.625C2.5 5.13125 4.38125 3.25 6.875 3.25C8.8 3.25 10.675 4.49375 11.3313 6.2H13.6625C14.325 4.49375 16.2 3.25 18.125 3.25C20.6188 3.25 22.5 5.13125 22.5 7.625C22.5 11.2375 18.575 14.8 12.6313 20.1938Z" fill="#EB6B6B"/>
+                </svg>
+                <svg class="liked-svg offscreen" width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M12.5 23.6875L10.6875 22.0438C4.25 16.2 0 12.3438 0 7.625C0 3.76875 3.01875 0.75 6.875 0.75C9.05 0.75 11.1375 1.7625 12.5 3.35625C13.8625 1.7625 15.95 0.75 18.125 0.75C21.9813 0.75 25 3.76875 25 7.625C25 12.3438 20.75 16.2 14.3125 22.0438L12.5 23.6875Z" fill="#EB6B6B"/>
+                  </svg>                  
+              </button>
+            </div>
+          </div>
+          <div class="feed container">
+            <div class="user-data">
+              <img src="images/csillag.jpg" alt="Csillag"><div class="text"><div class="name"><b>Csillag</b> megosztotta</div><div class="status">Aggódónak érzi magát</div></div>
+            </div>
+            <img src="images/feed/csillag7.jpg">
+            <div class="description">
+              UPDATE: Van! Van-e nekem olyan autós ismerősöm, aki ma este (6 után) el tud engem vinni Kőbányáról Csepelre egy cicmánnyal együtt? Cserébe társaság, minicica-élmény, sör, süti, vacsora igény szerint az erkélyen. (Ha esetleg a Csepel-Kőbánya-Csepel belefér, hétszeresen kalligráfiába foglalom a neved. De a lényeg hogy a kis szutykot ne kelljen egy órát nyaktatni BKVn.) Ps: a kis cirmos pogácsaképűek még gazdikeresők! Én a kormit fogadom be.
+            </div>
+            <div class="like-section">
+              <div class="likes-container">
+                <svg width="74" height="68" viewBox="0 0 74 68" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M37.0002 67.2522L31.744 62.4853C13.0752 45.5384 0.750244 34.3553 0.750244 20.6709C0.750244 9.48777 9.50462 0.733398 20.6877 0.733398C26.9952 0.733398 33.049 3.66965 37.0002 8.29152C40.9515 3.66965 47.0052 0.733398 53.3127 0.733398C64.4959 0.733398 73.2502 9.48777 73.2502 20.6709C73.2502 34.3553 60.9252 45.5384 42.2565 62.4853L37.0002 67.2522Z" fill="#4B7EFF"/>
+                </svg>
+                <span class="likes">350</span>
+                <span class="comment">169 Hozzászólás</span>
+              </div>
+              <button class="like">
+                <svg class="like-svg" width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M18.125 0.75C15.95 0.75 13.8625 1.7625 12.5 3.35625C11.1375 1.7625 9.05 0.75 6.875 0.75C3.01875 0.75 0 3.76875 0 7.625C0 12.3438 4.25 16.2 10.6875 22.0438L12.5 23.6875L14.3125 22.0438C20.75 16.2 25 12.3438 25 7.625C25 3.76875 21.9813 0.75 18.125 0.75ZM12.6313 20.1938L12.5 20.3125L12.3688 20.1938C6.425 14.8 2.5 11.2375 2.5 7.625C2.5 5.13125 4.38125 3.25 6.875 3.25C8.8 3.25 10.675 4.49375 11.3313 6.2H13.6625C14.325 4.49375 16.2 3.25 18.125 3.25C20.6188 3.25 22.5 5.13125 22.5 7.625C22.5 11.2375 18.575 14.8 12.6313 20.1938Z" fill="#EB6B6B"/>
+                </svg>
+                <svg class="liked-svg offscreen" width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M12.5 23.6875L10.6875 22.0438C4.25 16.2 0 12.3438 0 7.625C0 3.76875 3.01875 0.75 6.875 0.75C9.05 0.75 11.1375 1.7625 12.5 3.35625C13.8625 1.7625 15.95 0.75 18.125 0.75C21.9813 0.75 25 3.76875 25 7.625C25 12.3438 20.75 16.2 14.3125 22.0438L12.5 23.6875Z" fill="#EB6B6B"/>
+                  </svg>                  
+              </button>
+            </div>
+          </div>
+          <div class="feed container">
+            <div class="user-data">
+              <img src="images/csillag.jpg" alt="Csillag"><div class="text"><div class="name"><b>Csillag</b> megosztotta</div><div class="status">Bosszúsnak érzi magát</div></div>
+            </div>
+            <img src="images/feed/csillag8.jpg">
+            <div class="description">
+              ...hopsz.  
+            </div>
+            <div class="like-section">
+              <div class="likes-container">
+                <svg width="74" height="68" viewBox="0 0 74 68" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M37.0002 67.2522L31.744 62.4853C13.0752 45.5384 0.750244 34.3553 0.750244 20.6709C0.750244 9.48777 9.50462 0.733398 20.6877 0.733398C26.9952 0.733398 33.049 3.66965 37.0002 8.29152C40.9515 3.66965 47.0052 0.733398 53.3127 0.733398C64.4959 0.733398 73.2502 9.48777 73.2502 20.6709C73.2502 34.3553 60.9252 45.5384 42.2565 62.4853L37.0002 67.2522Z" fill="#4B7EFF"/>
+                </svg>
+                <span class="likes">410</span>
+                <span class="comment">12 Hozzászólás</span>
+              </div>
+              <button class="like">
+                <svg class="like-svg" width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M18.125 0.75C15.95 0.75 13.8625 1.7625 12.5 3.35625C11.1375 1.7625 9.05 0.75 6.875 0.75C3.01875 0.75 0 3.76875 0 7.625C0 12.3438 4.25 16.2 10.6875 22.0438L12.5 23.6875L14.3125 22.0438C20.75 16.2 25 12.3438 25 7.625C25 3.76875 21.9813 0.75 18.125 0.75ZM12.6313 20.1938L12.5 20.3125L12.3688 20.1938C6.425 14.8 2.5 11.2375 2.5 7.625C2.5 5.13125 4.38125 3.25 6.875 3.25C8.8 3.25 10.675 4.49375 11.3313 6.2H13.6625C14.325 4.49375 16.2 3.25 18.125 3.25C20.6188 3.25 22.5 5.13125 22.5 7.625C22.5 11.2375 18.575 14.8 12.6313 20.1938Z" fill="#EB6B6B"/>
+                </svg>
+                <svg class="liked-svg offscreen" width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M12.5 23.6875L10.6875 22.0438C4.25 16.2 0 12.3438 0 7.625C0 3.76875 3.01875 0.75 6.875 0.75C9.05 0.75 11.1375 1.7625 12.5 3.35625C13.8625 1.7625 15.95 0.75 18.125 0.75C21.9813 0.75 25 3.76875 25 7.625C25 12.3438 20.75 16.2 14.3125 22.0438L12.5 23.6875Z" fill="#EB6B6B"/>
+                  </svg>                  
+              </button>
+            </div>
+          </div>
+          <div class="feed container">
+            <div class="user-data">
+              <img src="images/csillag.jpg" alt="Csillag"><div class="text"><div class="name"><b>Csillag</b> megosztotta</div><div class="status">Elveszettnek érzi magát</div></div>
+            </div>
+            <div class="description">
+              HELP - Tejmentes diéta Kedves vegán és tejmentes ismerősök, segítsetek nekem! Mivel pótoljátok a mit? Kedves vegán és tejmentes ismerősök, segitsetek nekem! Mivel pótoljátok a mit? Két hét, nem végtelen idő, szóval csomó minden kihagyható, de pár dolog hirtelen kérdéses: - Tej a kávéba - milló féle van, nektek mi a kedvenc és hol szerzitek be? - Sajt.  Szomorú leszek, mert nem ehetek sajt. Mit egyek helyette? - Joghurt. Az összes curry-mre, a müzlimre, a túróhoz. Ja várj, túró se. (Oké, az túlélem.) Millió köszi, örök hálám, ilyesmik.  
+            </div>
+            <div class="like-section">
+              <div class="likes-container">
+                <svg width="74" height="68" viewBox="0 0 74 68" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M37.0002 67.2522L31.744 62.4853C13.0752 45.5384 0.750244 34.3553 0.750244 20.6709C0.750244 9.48777 9.50462 0.733398 20.6877 0.733398C26.9952 0.733398 33.049 3.66965 37.0002 8.29152C40.9515 3.66965 47.0052 0.733398 53.3127 0.733398C64.4959 0.733398 73.2502 9.48777 73.2502 20.6709C73.2502 34.3553 60.9252 45.5384 42.2565 62.4853L37.0002 67.2522Z" fill="#4B7EFF"/>
+                </svg>
+                <span class="likes">144</span>
+                <span class="comment">215 Hozzászólás</span>
+              </div>
+              <button class="like">
+                <svg class="like-svg" width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M18.125 0.75C15.95 0.75 13.8625 1.7625 12.5 3.35625C11.1375 1.7625 9.05 0.75 6.875 0.75C3.01875 0.75 0 3.76875 0 7.625C0 12.3438 4.25 16.2 10.6875 22.0438L12.5 23.6875L14.3125 22.0438C20.75 16.2 25 12.3438 25 7.625C25 3.76875 21.9813 0.75 18.125 0.75ZM12.6313 20.1938L12.5 20.3125L12.3688 20.1938C6.425 14.8 2.5 11.2375 2.5 7.625C2.5 5.13125 4.38125 3.25 6.875 3.25C8.8 3.25 10.675 4.49375 11.3313 6.2H13.6625C14.325 4.49375 16.2 3.25 18.125 3.25C20.6188 3.25 22.5 5.13125 22.5 7.625C22.5 11.2375 18.575 14.8 12.6313 20.1938Z" fill="#EB6B6B"/>
+                </svg>
+                <svg class="liked-svg offscreen" width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M12.5 23.6875L10.6875 22.0438C4.25 16.2 0 12.3438 0 7.625C0 3.76875 3.01875 0.75 6.875 0.75C9.05 0.75 11.1375 1.7625 12.5 3.35625C13.8625 1.7625 15.95 0.75 18.125 0.75C21.9813 0.75 25 3.76875 25 7.625C25 12.3438 20.75 16.2 14.3125 22.0438L12.5 23.6875Z" fill="#EB6B6B"/>
+                  </svg>                  
+              </button>
+            </div>
+          </div>
+          <div class="feed container">
+            <div class="user-data">
+              <img src="images/csillag.jpg" alt="Csillag"><div class="text"><div class="name"><b>Csillag</b> megosztotta</div><div class="status">Boldognak érzi magát</div></div>
+            </div>
+            <img src="images/feed/csillag10.jpg">
+            <div class="description">
+              Úgy tűnik, a teakollekcióm áramvonalasítására tett (amúgy teljesen komolyan vehetetlen) kísérletemet csúful keresztül húzták idén a kollégák... Ó JAJJ, SZÖRNYŰSÉG, meg ilyenek.
+            </div>
+            <div class="like-section">
+              <div class="likes-container">
+                <svg width="74" height="68" viewBox="0 0 74 68" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M37.0002 67.2522L31.744 62.4853C13.0752 45.5384 0.750244 34.3553 0.750244 20.6709C0.750244 9.48777 9.50462 0.733398 20.6877 0.733398C26.9952 0.733398 33.049 3.66965 37.0002 8.29152C40.9515 3.66965 47.0052 0.733398 53.3127 0.733398C64.4959 0.733398 73.2502 9.48777 73.2502 20.6709C73.2502 34.3553 60.9252 45.5384 42.2565 62.4853L37.0002 67.2522Z" fill="#4B7EFF"/>
+                </svg>
+                <span class="likes">144</span>
+                <span class="comment">215 Hozzászólás</span>
+              </div>
+              <button class="like">
+                <svg class="like-svg" width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M18.125 0.75C15.95 0.75 13.8625 1.7625 12.5 3.35625C11.1375 1.7625 9.05 0.75 6.875 0.75C3.01875 0.75 0 3.76875 0 7.625C0 12.3438 4.25 16.2 10.6875 22.0438L12.5 23.6875L14.3125 22.0438C20.75 16.2 25 12.3438 25 7.625C25 3.76875 21.9813 0.75 18.125 0.75ZM12.6313 20.1938L12.5 20.3125L12.3688 20.1938C6.425 14.8 2.5 11.2375 2.5 7.625C2.5 5.13125 4.38125 3.25 6.875 3.25C8.8 3.25 10.675 4.49375 11.3313 6.2H13.6625C14.325 4.49375 16.2 3.25 18.125 3.25C20.6188 3.25 22.5 5.13125 22.5 7.625C22.5 11.2375 18.575 14.8 12.6313 20.1938Z" fill="#EB6B6B"/>
+                </svg>
+                <svg class="liked-svg offscreen" width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M12.5 23.6875L10.6875 22.0438C4.25 16.2 0 12.3438 0 7.625C0 3.76875 3.01875 0.75 6.875 0.75C9.05 0.75 11.1375 1.7625 12.5 3.35625C13.8625 1.7625 15.95 0.75 18.125 0.75C21.9813 0.75 25 3.76875 25 7.625C25 12.3438 20.75 16.2 14.3125 22.0438L12.5 23.6875Z" fill="#EB6B6B"/>
+                  </svg>                  
+              </button>
+            </div>
+          </div>
+          <span>Betöltés folyamatban...</span>
+        </div>
+        <div class="menu">
+          <div class="svg">
+            <svg width="24" height="30" viewBox="0 0 24 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 30C13.6575 30 15 28.6575 15 27H9C9 28.6575 10.3425 30 12 30ZM21 21V13.5C21 8.8875 18.5475 5.04 14.25 4.02V3C14.25 1.755 13.245 0.75 12 0.75C10.755 0.75 9.75 1.755 9.75 3V4.02C5.4525 5.04 3 8.8875 3 13.5V21L0 24V25.5H24V24L21 21Z" fill="white"/>
+            </svg>
+          </div>
+          <div class="svg">
+            <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M15 0C6.7125 0 0 6.7125 0 15C0 23.2875 6.7125 30 15 30C23.2875 30 30 23.2875 30 15C30 6.7125 23.2875 0 15 0ZM15 4.5C17.4825 4.5 19.5 6.5175 19.5 9C19.5 11.49 17.4825 13.5 15 13.5C12.5175 13.5 10.5 11.49 10.5 9C10.5 6.5175 12.5175 4.5 15 4.5ZM15 25.8C11.2425 25.8 7.9425 23.88 6 20.97C6.0375 17.9925 12.0075 16.35 15 16.35C17.9925 16.35 23.955 17.9925 24 20.97C22.0575 23.88 18.7575 25.8 15 25.8Z" fill="white"/>
+            </svg>
+          </div>
+          <div class="svg">
+            <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg" class="feed-menu">
+              <path d="M26 15.5H2C1.175 15.5 0.5 16.175 0.5 17V26C0.5 26.825 1.175 27.5 2 27.5H26C26.825 27.5 27.5 26.825 27.5 26V17C27.5 16.175 26.825 15.5 26 15.5ZM6.5 24.5C4.8425 24.5 3.5 23.1575 3.5 21.5C3.5 19.8425 4.8425 18.5 6.5 18.5C8.1575 18.5 9.5 19.8425 9.5 21.5C9.5 23.1575 8.1575 24.5 6.5 24.5ZM26 0.5H2C1.175 0.5 0.5 1.175 0.5 2V11C0.5 11.825 1.175 12.5 2 12.5H26C26.825 12.5 27.5 11.825 27.5 11V2C27.5 1.175 26.825 0.5 26 0.5ZM6.5 9.5C4.8425 9.5 3.5 8.1575 3.5 6.5C3.5 4.8425 4.8425 3.5 6.5 3.5C8.1575 3.5 9.5 4.8425 9.5 6.5C9.5 8.1575 8.1575 9.5 6.5 9.5Z" fill="white"/>
+            </svg>            
+          </div>
+          <div class="svg">
+            <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg" class="chat-menu">
+              <path d="M27 0H3C1.3425 0 0.015 1.3425 0.015 3L0 30L6 24H27C28.6575 24 30 22.6575 30 21V3C30 1.3425 28.6575 0 27 0ZM6 10.5H24V13.5H6V10.5ZM18 18H6V15H18V18ZM24 9H6V6H24V9Z" fill="white"/>
+            </svg>                                           
+          </div>
+        </div>
+      </div>
+      <div id="randi-chat" class="container offscreen">
+        <div class="content">
+          <div class="header">
+            <h1>Randi Maker chat</h1>
+            <hr>
+          </div>
+          <div class="messages remove-flex-end">
+            <div class="messages-container">
+              <div class="message">
+                <img src="images/randi.jpg">
+                <div>
+                  <p>Hé, haver!</p>
+                  <p>Menő akarsz lenni, de fogalmad sincs, hogyan legyél az? Így a csajhoz se férsz hozzá, aki jár neked? Felszednéd a suli legjobb nőjét, de hiányzik belőled az igazi férfiakra jellemző VADÁSZÖSZTÖN?</p>
+                  <p>Szívesen viselkednél úgy, mint egy ALFA, de nem tudod, miként kéne?</p>
+                  <p>Akkor a Randi Maker lesz a legújabb és legjobb barátod!</p>
+                  <p>Ezt a csúcstechnológiás appot az élet nagybetűs CSÁSZÁRAI fejlesztették ki a legmodernebb MI és AR technológiákat felhasználva, megalkotásakor pedig egyetlen cél lebegett a szemük előtt: megosztani veled a sikeres csajozás legfontosabb titkait!</p>
+                  <p>Itt az első tanácsunk! Elemeztük a csaj profilját és utálja a menzát. Veress egy KIKERÜLHETETLEN meme-et a MEKERREL és tuti tarolsz a neten! Csak neked jelöltük azokat a képeket, amikkel MINDENKIT LEURALHATSZ a hálón!</p>
+                </div>
+              </div>
+              <div class="message">
+                <img src="images/randi.jpg">
+                <div go-to-meme-maker><a style="color: blue;">IRÁNY A MEME MAKER</a></div>
+              </div>
+            </div>
+          </div>
+          <footer>
+            <div class="typing offscreen">
+              <div class="loader grey small">Loading...</div>
+            </div>
+            <div class="interaction">
+              <input type="text" disabled="" placeholder="Kattints ide az íráshoz">
+              <button class="btn">
+                <svg width="21" height="19" viewBox="0 0 21 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M0.971256 17.0515C0.972277 17.7695 1.7072 18.2525 2.3667 17.9685L19.9031 10.4185C20.7092 10.0715 20.7092 8.92856 19.9031 8.58152L2.36669 1.03149C1.7072 0.747561 0.972277 1.23055 0.971256 1.94856L0.964626 6.60852C0.963912 7.11006 1.33482 7.53455 1.83193 7.6011L8.61229 8.50885C9.76869 8.66367 9.7687 10.3363 8.6123 10.4912L1.83193 11.3989C1.33483 11.4655 0.963912 11.89 0.964626 12.3915L0.971256 17.0515Z" fill="#F8F8F8"/>
+                </svg>                  
+              </button>
+            </div>
+          </footer>
+        </div>
+        <div class="menu" disabled>
+          <div class="svg">
+            <svg width="24" height="30" viewBox="0 0 24 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 30C13.6575 30 15 28.6575 15 27H9C9 28.6575 10.3425 30 12 30ZM21 21V13.5C21 8.8875 18.5475 5.04 14.25 4.02V3C14.25 1.755 13.245 0.75 12 0.75C10.755 0.75 9.75 1.755 9.75 3V4.02C5.4525 5.04 3 8.8875 3 13.5V21L0 24V25.5H24V24L21 21Z" fill="white"/>
+            </svg>
+          </div>
+          <div class="svg">
+            <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M15 0C6.7125 0 0 6.7125 0 15C0 23.2875 6.7125 30 15 30C23.2875 30 30 23.2875 30 15C30 6.7125 23.2875 0 15 0ZM15 4.5C17.4825 4.5 19.5 6.5175 19.5 9C19.5 11.49 17.4825 13.5 15 13.5C12.5175 13.5 10.5 11.49 10.5 9C10.5 6.5175 12.5175 4.5 15 4.5ZM15 25.8C11.2425 25.8 7.9425 23.88 6 20.97C6.0375 17.9925 12.0075 16.35 15 16.35C17.9925 16.35 23.955 17.9925 24 20.97C22.0575 23.88 18.7575 25.8 15 25.8Z" fill="white"/>
+            </svg>
+          </div>
+          <div class="svg">
+            <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg" class="feed-menu">
+              <path d="M26 15.5H2C1.175 15.5 0.5 16.175 0.5 17V26C0.5 26.825 1.175 27.5 2 27.5H26C26.825 27.5 27.5 26.825 27.5 26V17C27.5 16.175 26.825 15.5 26 15.5ZM6.5 24.5C4.8425 24.5 3.5 23.1575 3.5 21.5C3.5 19.8425 4.8425 18.5 6.5 18.5C8.1575 18.5 9.5 19.8425 9.5 21.5C9.5 23.1575 8.1575 24.5 6.5 24.5ZM26 0.5H2C1.175 0.5 0.5 1.175 0.5 2V11C0.5 11.825 1.175 12.5 2 12.5H26C26.825 12.5 27.5 11.825 27.5 11V2C27.5 1.175 26.825 0.5 26 0.5ZM6.5 9.5C4.8425 9.5 3.5 8.1575 3.5 6.5C3.5 4.8425 4.8425 3.5 6.5 3.5C8.1575 3.5 9.5 4.8425 9.5 6.5C9.5 8.1575 8.1575 9.5 6.5 9.5Z" fill="white"/>
+            </svg>
+          </div>
+          <div class="svg">
+            <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M27 0H3C1.3425 0 0.015 1.3425 0.015 3L0 30L6 24H27C28.6575 24 30 22.6575 30 21V3C30 1.3425 28.6575 0 27 0ZM6 10.5H24V13.5H6V10.5ZM18 18H6V15H18V18ZM24 9H6V6H24V9Z" fill="#D8D8D8"/>
+            </svg>
+          </div>
+                                                               
+        </div>
+        <div id="hektor-chat2" class="offscreen">
+          <div class="messages-container">
+            <div class="message">
+              <img src="images/hektor.jpg">
+              <div>Na bejelölted?</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="meme-maker" class="container offscreen">
+        <div class="content">
+          <div class="header">
+            <h1>MEME MAKER</h1>
+            <hr>
+            <div class="randi-maker-desc">Hála a <b>Randi Maker</b>nek meg tudjuk mondani, <b>egy MEME mennyi like-ot ér</b> neked! Legyél népszerű!</div>
+            <div class="meme-desc offscreen"><d>Elkészült a MEME</d>-d <b class="like"></b> <b>Like</b> lehet a jutalmad, oszd meg vagy küld el!</div>
+          </div>
+          <form name="meme-image">
+            <div class="title">Válassz képet</div>
+            <input type="radio" id="meme-image-1" name="meme-image" value="meme1" required>
+            <label for="meme-image-1" like="1500"><img src="images/meme/meme1.jpg"><div>várható like-ok száma: 1500</div></label>
+            <input type="radio" id="meme-image-2" name="meme-image" value="meme2" required>
+            <label for="meme-image-2" like="1230"><img src="images/meme/meme2.jpg"><div>várható like-ok száma: 1230</div></label>
+            <button id="meme-image-save" class="btn red" disabled="disabled">Tovább</button>
+          </form>
+          <div class="image-selected offscreen">
+            <div class="title">MEME előnézete</div>
+            <div class="img-wrapper">
+              <img src="images/meme/meme1.jpg" meme1 class="offscreen">
+              <img src="images/meme/meme2.jpg" meme2 class="offscreen">
+              <div class="selected-text offscreen"></div>
+            </div>
+            <div class="meme-final-likes offscreen"></div>
+            <form name="meme-text">
+              <div class="title">Válasz feliratot, növeld a likok számát!</div>
+              <input type="radio" id="meme1-text-1" name="meme-text" value="Ha az élet megrág és ki köp, akkor menzán dolgozol" required>
+              <label for="meme1-text-1" meme1 class="offscreen" like="1300"><div class="meme-text">Ha az élet megrág és kiköp, akkor menzán dolgozol</div><div class="like">várható likok szám :1300</div></label>
+              <input type="radio" id="meme1-text-2" name="meme-text" value="Ha az élet menza kaját oszt, add a kutyáknak." required>
+              <label for="meme1-text-2" meme1 class="offscreen" like="1200"><div class="meme-text">Ha az élet menza kaját oszt, add a kutyáknak.</div><div class="like">várható likok szám :1200</div></label>
+              <input type="radio" id="meme2-text-1" name="meme-text" value="A nap legfontosabb étkezése a reggeli, mert ez az ebéd az iskolában." required>
+              <label for="meme2-text-1" meme2 class="offscreen" like="1200"><div class="meme-text">A nap legfontosabb étkezése a reggeli, mert ez az ebéd az iskolában.</div><div class="like">várható likok szám :1200</div></label>
+              <input type="radio" id="meme2-text-2" name="meme-text" value="A kedvencem a sárgaborsó főzelék." required>
+              <label for="meme2-text-2" meme2 class="offscreen" like="100"><div class="meme-text">A kedvencem a sárgaborsó főzelék.</div><div class="like">várható likok szám :100</div></label>
+              <button id="meme-save" class="btn red" disabled="disabled">Mentés és kész</button>
+            </form>
+            <button id="meme-share" class="btn red offscreen">Megosztás</button>
+          </div>
+        </div>
+      </div>
+		</div>
+    <div id="chat-head" class="first-init offscreen">
+      <img src="images/hektor.jpg" alt="Hektor">
+    </div>
+    <div id="csillag-disabled" class="offscreen">
+      <div class="fade">
+        <div class="container">
+          <svg width="74" height="68" viewBox="0 0 74 68" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M37.0005 67.3605L31.7442 62.5937C13.0755 45.6468 0.750488 34.4637 0.750488 20.7793C0.750488 9.59617 9.50486 0.841797 20.688 0.841797C26.9955 0.841797 33.0492 3.77805 37.0005 8.39992C40.9517 3.77805 47.0055 0.841797 53.313 0.841797C64.4961 0.841797 73.2505 9.59617 73.2505 20.7793C73.2505 34.4637 60.9255 45.6468 42.2567 62.5937L37.0005 67.3605Z" fill="#9C9C9C"/>
+          </svg>  
+          <div>Sajnáljuk, ezt a felhasználót nem tudod bejelölni. &#128577;</div>
+          <h2>Ez a felhasználó like-korlátot állított be, amíg nincs 1000 like-od, nem léphetsz vele kapcsolatba.</h2>
+          <button id="understand-btn-csillag" class="btn">Értem</button>
+        </div>
+      </div>
+    </div>
+    <div id="randimaker-overlay" class="container offscreen">
+      <div class="fade">
+        <div class="container">
+          <svg width="70" height="73" viewBox="0 0 70 73" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M41.565 26.2125C40.9802 25.847 40.625 25.2061 40.625 24.5165V5.6875C40.625 2.67875 38.1963 0.25 35.1875 0.25C32.1788 0.25 29.75 2.67875 29.75 5.6875V18.1991C29.75 18.7295 29.9607 19.2382 30.3358 19.6133L57.7683 47.0458C57.9965 47.2739 58.2765 47.4435 58.5844 47.54L67.0269 50.1858C68.3151 50.5895 69.625 49.6273 69.625 48.2773V44.8585C69.625 44.1689 69.2698 43.528 68.685 43.1625L41.565 26.2125ZM5.78921 10.7077C5.00817 11.4887 5.00816 12.755 5.78921 13.5361L20.6678 28.4146C21.5773 29.3241 21.4042 30.8433 20.3134 31.5249L1.69013 43.1625C1.10529 43.528 0.75 44.169 0.75 44.8586V48.2796C0.75 49.6289 2.05869 50.591 3.34655 50.1886L27.1535 42.7489C28.4413 42.3465 29.75 43.3086 29.75 44.6579V60.875C29.75 61.5045 29.4536 62.0973 28.95 62.475L23.3 66.7125C22.7964 67.0902 22.5 67.683 22.5 68.3125V70.0985C22.5 71.4273 23.7718 72.3866 25.0494 72.0216L34.6381 69.282C34.9972 69.1794 35.3778 69.1794 35.7369 69.282L45.3256 72.0216C46.6032 72.3866 47.875 71.4273 47.875 70.0985V68.3125C47.875 67.683 47.5786 67.0902 47.075 66.7125L41.425 62.475C40.9214 62.0973 40.625 61.5045 40.625 60.875V53.2003C40.625 51.4185 42.7793 50.5262 44.0392 51.7861L59.9639 67.7108C60.745 68.4918 62.0113 68.4918 62.7923 67.7108L64.5858 65.9173C65.3668 65.1363 65.3668 63.87 64.5858 63.0889L10.4111 8.91421C9.63004 8.13317 8.36371 8.13316 7.58266 8.91421L5.78921 10.7077Z" fill="#610000"/>
+          </svg>              
+          <div>Kell a csaj mi? Itt az idelye hogy férfivá válj és szerezz pár <b>LIKOT</b>.</div>
+          <h2>Van like van csaj! A randi maker megcsinálja!</h2>
+          <button install-randi-maker class="btn red">Randi Maker segíts!</button>
+          <button exit-randi-maker-overlay class="btn red selected">Nem érdekel</button>
+        </div>
+      </div>
+    </div>
+    <div id="like-limit" class="offscreen">
+      <div class="fade">
+        <div class="container">
+          <svg width="73" height="68" viewBox="0 0 73 68" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M36.5002 67.2522L31.244 62.4853C12.5752 45.5384 0.250244 34.3553 0.250244 20.6709C0.250244 9.48777 9.00462 0.733398 20.1877 0.733398C26.4952 0.733398 32.549 3.66965 36.5002 8.29152C40.4515 3.66965 46.5052 0.733398 52.8127 0.733398C63.9959 0.733398 72.7502 9.48777 72.7502 20.6709C72.7502 34.3553 60.4252 45.5384 41.7565 62.4853L36.5002 67.2522Z" fill="#E10000"/>
+          </svg>              
+          <div>Hooppá!!! Átlépted a like határt!</div>
+          <h2>Most már bejelölheted Csillag nevű felhasználónkat!</h2>
+          <button id="csillag-request" class="btn">Ismerősnek jelölés</button>
+        </div>
+      </div>
+    </div>
+    <div id="end" class="offscreen">
+      <div class="container">
+        <div>Köszönjük, hogy kipróbáltad a Mass tech demóját. A folytatás hamarosan következik!</div>
+      </div>
+    </div>
+  </main>
+</body>
+</html>
